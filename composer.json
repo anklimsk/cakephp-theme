@@ -1,0 +1,29 @@
+{
+    "name": "anklimsk/cakephp-theme",
+    "description": "Full UI theme for CakePHP 2.x",
+    "type": "cakephp-plugin",
+    "homepage": "https://github.com/anklimsk/cakephp-theme",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andrey Klimov"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "composer/installers": "^1.5.0",
+        "anklimsk/cakephp-basic-functions": "*",
+        "anklimsk/cakephp-config-plugin": "*",
+        "anklimsk/cakephp-extended-test": "*",
+        "dereuromark/cakephp-queue": "^2.3.0",
+        "codaxis/cakephp-bootstrap3-helpers": "^1.2",
+        "dereuromark/cakephp-tools": "2.x-dev"
+        
+    },
+    "support": {
+        "source": "https://github.com/anklimsk/cakephp-theme"
+    },
+    "extra": {
+        "installer-name": "CakeTheme"
+    }
+}
