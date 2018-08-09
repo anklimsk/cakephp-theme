@@ -29,10 +29,21 @@ if (!isset($showMainMenu)) {
 }
 
 if (!isset($projectName)) {
-    $projectName = __d('project', PROJECT_NAME);
+    $projectName = null;
+    if (defined('PROJECT_NAME')) {
+        $projectName = __d('project', PROJECT_NAME);
+    }
 }
+
 $useNavbarContainerFluid = false;
-$projectLogo = PROJECT_LOGO_IMAGE_SMALL;
+
+if (!isset($projectLogo)) {
+    $projectLogo = null;
+    if (defined('PROJECT_LOGO_IMAGE_SMALL')) {
+        $projectLogo = PROJECT_LOGO_IMAGE_SMALL;
+    }
+}
+
 $iconList = [];
 
 if (!$showMainMenu) {
