@@ -39,8 +39,6 @@ class ViewExtensionHelperTest extends AppCakeTestCase
         $View = new View();
         $View->request = new CakeRequest(null, false);
         $this->_targetObject = new ViewExtensionHelper($View);
-        $this->storeLocale();
-        $this->setEngLocale();
     }
 
     /**
@@ -50,8 +48,6 @@ class ViewExtensionHelperTest extends AppCakeTestCase
      */
     public function tearDown()
     {
-        $this->restoreLocale();
-
         parent::tearDown();
     }
 
@@ -1556,10 +1552,11 @@ class ViewExtensionHelperTest extends AppCakeTestCase
         ];
         $expected = [
             '<dl class="dl-horizontal"><dt>Some label:</dt><dd>' . __d('view_extension', '&lt;None&gt;') . '</dd></dl>',
-            '<dl class="dl-horizontal"><dt>Some Controller:</dt><dd><ol><li><a href="/admin/some_controller/some_action/1" link-use-modal="1" data-modal-title="' . __d('view_extension', 'Detail information') . '" class="popup-link text-nowrap" target="_blank" data-toggle="popover" data-popover-placement="auto top">Some record</a> (<time data-toggle="timeago" datetime="2017-03-06T12:10:27+03:00" class="help">3/6/2017 12:10:27 PM</time>)</li><li><a href="/admin/some_controller/some_action/2" link-use-modal="1" data-modal-title="' . __d('view_extension', 'Detail information') . '" class="popup-link text-nowrap" target="_blank" data-toggle="popover" data-popover-placement="auto top"><div class="collapse-text-expanded"><div class="collapse-text-truncated">Some long record<a href="#" role="button" data-toggle="collapse-text-expand" class="collapse-text-action-btn" title="' . __d('view_extension', 'Expand text') . '"><span class="fas fa-angle-double-right fa-lg"></span></a></div><div class="collapse-text-original">Some long record name for test<a href="#" role="button" data-toggle="collapse-text-roll-up" class="collapse-text-action-btn" title="' . __d('view_extension', 'Roll up text') . '"><span class="fas fa-angle-double-left fa-lg"></span></a></div></div></a> (<time data-toggle="timeago" datetime="2017-03-06T12:14:42+03:00" class="help">3/6/2017 12:14:42 PM</time>)</li></ol></dd></dl>',
+            [
+                'assertRegExp' => '/<dl class="dl-horizontal"><dt>Some Controller:<\/dt><dd><ol><li><a href="\/admin\/some_controller\/some_action\/1" link-use-modal="1" data-modal-title="Detail information" class="popup-link text-nowrap" target="_blank" data-toggle="popover" data-popover-placement="auto top">Some record<\/a> \(<time data-toggle="timeago" datetime="2017-03-06T12:10:27\+00:00" class="help">.+<\/time>\)<\/li><li><a href="\/admin\/some_controller\/some_action\/2" link-use-modal="1" data-modal-title="Detail information" class="popup-link text-nowrap" target="_blank" data-toggle="popover" data-popover-placement="auto top"><div class="collapse-text-expanded"><div class="collapse-text-truncated">Some long record<a href="#" role="button" data-toggle="collapse-text-expand" class="collapse-text-action-btn" title="Expand text"><span class="fas fa-angle-double-right fa-lg"><\/span><\/a><\/div><div class="collapse-text-original">Some long record name for test<a href="#" role="button" data-toggle="collapse-text-roll-up" class="collapse-text-action-btn" title="Roll up text"><span class="fas fa-angle-double-left fa-lg"><\/span><\/a><\/div><\/div><\/a> \(<time data-toggle="timeago" datetime="2017-03-06T12:14:42\+00:00" class="help">.+<\/time>\)<\/li><\/ol><\/dd><\/dl>/'
+            ]
         ];
         $this->runClassMethodGroup('listLastInfo', $params, $expected);
-        $this->restoreLocale();
     }
 
     /**
