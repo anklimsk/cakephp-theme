@@ -84,7 +84,9 @@ class ViewExtensionHelper extends CakeThemeAppHelper
     {
         parent::__construct($View, $settings);
         $this->_Language = new Language();
-        $this->_NumberTextLib = new NumberTextLib();
+        if (CakePlugin::loaded('Tools')) {
+            $this->_NumberTextLib = new NumberTextLib();
+        }
         $config = [];
         if (Configure::check('CakeTheme.ViewExtension.Helper')) {
             $config = (array)Configure::read('CakeTheme.ViewExtension.Helper');
@@ -1543,11 +1545,14 @@ class ViewExtensionHelper extends CakeThemeAppHelper
      * Return language name for library Tools.NumberText.
      *
      * @param string $langCode Languge code in format `ISO 639-1` or `ISO 639-2`
-     * @return string Return language name in format RFC5646.
+     * @return string|bool Return language name in format RFC5646, or False on failure.
      * @link http://numbertext.org/ Universal number to text conversion languag
      */
     protected function _getLangForNumberText($langCode = null)
     {
+        if (!is_object($this->_NumberTextLib)) {
+            return false;
+        }
         $cachePath = 'lang_code_number_lib_' . md5(serialize(func_get_args()));
         $cached = Cache::read($cachePath, CAKE_THEME_CACHE_KEY_LANG_CODE);
         if (!empty($cached)) {
@@ -1566,10 +1571,13 @@ class ViewExtensionHelper extends CakeThemeAppHelper
      *
      * @param array $number Number for processing
      * @param string $langCode Languge code in format `ISO 639-1` or `ISO 639-2`
-     * @return string Return number as text.
+     * @return string|bool Return number as text, or False on failure.
      */
     public function numberText($number = null, $langCode = null)
     {
+        if (!is_object($this->_NumberTextLib)) {
+            return false;
+        }
         $langNumb = $this->_getLangForNumberText($langCode);
 
         return $this->_NumberTextLib->numberText($number, $langNumb);

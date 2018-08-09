@@ -1426,6 +1426,8 @@ class ViewExtensionHelperTest extends AppCakeTestCase
      */
     public function testNumberText()
     {
+        $this->skipIf(!CakePlugin::loaded('Tools'), "Plugin 'Tools' is not loaded");
+
         Configure::write('Config.language', 'rus');
         $params = [
             [
