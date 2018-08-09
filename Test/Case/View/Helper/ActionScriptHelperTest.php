@@ -4,6 +4,7 @@ App::uses('Helper', 'View');
 App::uses('ActionScriptHelper', 'CakeTheme.View/Helper');
 App::uses('AppCakeTestCase', 'CakeTheme.Test');
 App::uses('CakeRequest', 'Network');
+App::uses('Folder', 'Utility');
 
 /**
  * PhonenumberHelper Test Case
@@ -37,6 +38,13 @@ class ActionScriptHelperTest extends AppCakeTestCase
 
         date_default_timezone_set('UTC');
         Configure::write('Config.timezone', 'UTC');
+        $timestamp = strtotime('2018-08-08 14:27:06 UTC');
+        $oFolder = new Folder();
+        $aFilesWebRoot = $oFolder->tree($testWebRoot, false, 'file');
+        foreach ($aFilesWebRoot as $filePath) {
+            touch($filePath, $timestamp);
+        }
+
         Configure::write('App.www_root', $testWebRoot);
     }
 
@@ -95,7 +103,7 @@ class ActionScriptHelperTest extends AppCakeTestCase
             'action' => 'tst'];
         $this->_targetObject->request->addParams($params);
         $result = $this->_targetObject->getFilesForAction('css', [], false, false);
-        $expected = ['specific/tests/tst.css?v=56c469e5'];
+        $expected = ['specific/tests/tst.css?v=5b6afdba'];
         $this->assertData($expected, $result);
     }
 
@@ -112,8 +120,8 @@ class ActionScriptHelperTest extends AppCakeTestCase
         $this->_targetObject->request->addParams($params);
         $result = $this->_targetObject->getFilesForAction('js', ['somep'], false, false);
         $expected = [
-            'specific/tests/tst.js?v=56c48100',
-            'specific/tests/somep/tst.min.js?v=56c48078'];
+            'specific/tests/tst.js?v=5b6afdba',
+            'specific/tests/somep/tst.min.js?v=5b6afdba'];
         $this->assertData($expected, $result);
     }
 
@@ -129,7 +137,7 @@ class ActionScriptHelperTest extends AppCakeTestCase
             'action' => 'tst'];
         $this->_targetObject->request->addParams($params);
         $result = $this->_targetObject->getFilesForAction('js', ['param'], true, false);
-        $expected = ['specific/tests/param/tst.js?v=56c48078'];
+        $expected = ['specific/tests/param/tst.js?v=5b6afdba'];
         $this->assertData($expected, $result);
     }
 
@@ -146,7 +154,7 @@ class ActionScriptHelperTest extends AppCakeTestCase
         $this->_targetObject->request->addParams($params);
         $result = $this->_targetObject->getFilesForAction('css', [], false, false);
         $expected = [
-            'specific/tests/test.min.css?v=56c469e5'
+            'specific/tests/test.min.css?v=5b6afdba'
         ];
         $this->assertData($expected, $result);
     }
@@ -164,7 +172,7 @@ class ActionScriptHelperTest extends AppCakeTestCase
         $this->_targetObject->request->addParams($params);
         $result = $this->_targetObject->getFilesForAction('js', [], false, false);
         $expected = [
-            'specific/tests/test.min.js?v=56c48100'
+            'specific/tests/test.min.js?v=5b6afdba'
         ];
         $this->assertData($expected, $result);
     }
@@ -183,8 +191,8 @@ class ActionScriptHelperTest extends AppCakeTestCase
         $this->_targetObject->_View->set('specificJS', 'spec');
         $result = $this->_targetObject->getFilesForAction('js', [], false, false);
         $expected = [
-            'specific/tests/test.min.js?v=56c48100',
-            'specific/tests/spec.js?v=56c48100'
+            'specific/tests/test.min.js?v=5b6afdba',
+            'specific/tests/spec.js?v=5b6afdba'
         ];
         $this->assertData($expected, $result);
     }
@@ -203,9 +211,9 @@ class ActionScriptHelperTest extends AppCakeTestCase
         $this->_targetObject->_View->set('specificJS', ['spec', 'somec' . DS . 'file']);
         $result = $this->_targetObject->getFilesForAction('js', [], false, false);
         $expected = [
-            'specific/tests/test.min.js?v=56c48100',
-            'specific/tests/spec.js?v=56c48100',
-            'specific/somec/file.min.js?v=56c48078',
+            'specific/tests/test.min.js?v=5b6afdba',
+            'specific/tests/spec.js?v=5b6afdba',
+            'specific/somec/file.min.js?v=5b6afdba',
         ];
         $this->assertData($expected, $result);
     }
@@ -224,7 +232,7 @@ class ActionScriptHelperTest extends AppCakeTestCase
         $this->_targetObject->request->addParams($params);
         $result = $this->_targetObject->getFilesForAction('css', [], false, true);
         $expected = [
-            'specific/tests/admin_test.min.css?v=56c469e5'
+            'specific/tests/admin_test.min.css?v=5b6afdba'
         ];
         $this->assertData($expected, $result);
     }
@@ -243,7 +251,7 @@ class ActionScriptHelperTest extends AppCakeTestCase
         $this->_targetObject->request->addParams($params);
         $result = $this->_targetObject->getFilesForAction('js', [], false, true);
         $expected = [
-            'specific/tests/admin_test.min.js?v=56c48100'
+            'specific/tests/admin_test.min.js?v=5b6afdba'
         ];
         $this->assertData($expected, $result);
     }
@@ -271,7 +279,7 @@ class ActionScriptHelperTest extends AppCakeTestCase
             'action' => 'tst'];
         $this->_targetObject->request->addParams($params);
         $result = $this->_targetObject->css([], [], false, false);
-        $expected = "\n\t<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/specific/tests/tst.css?v=56c469e5\"/>\n";
+        $expected = "\n\t<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/specific/tests/tst.css?v=5b6afdba\"/>\n";
         $this->assertData($expected, $result);
     }
 
@@ -287,7 +295,7 @@ class ActionScriptHelperTest extends AppCakeTestCase
             'action' => 'tst'];
         $this->_targetObject->request->addParams($params);
         $result = $this->_targetObject->script([], ['somep'], false, false);
-        $expected = "\n\t<script type=\"text/javascript\" src=\"/js/specific/tests/tst.js?v=56c48100\"></script>\n\t<script type=\"text/javascript\" src=\"/js/specific/tests/somep/tst.min.js?v=56c48078\"></script>\n";
+        $expected = "\n\t<script type=\"text/javascript\" src=\"/js/specific/tests/tst.js?v=5b6afdba\"></script>\n\t<script type=\"text/javascript\" src=\"/js/specific/tests/somep/tst.min.js?v=5b6afdba\"></script>\n";
         $this->assertData($expected, $result);
     }
 
@@ -303,7 +311,7 @@ class ActionScriptHelperTest extends AppCakeTestCase
             'action' => 'tst'];
         $this->_targetObject->request->addParams($params);
         $result = $this->_targetObject->script([], ['param'], true, false);
-        $expected = "\n\t<script type=\"text/javascript\" src=\"/js/specific/tests/param/tst.js?v=56c48078\"></script>\n";
+        $expected = "\n\t<script type=\"text/javascript\" src=\"/js/specific/tests/param/tst.js?v=5b6afdba\"></script>\n";
         $this->assertData($expected, $result);
     }
 
@@ -319,7 +327,7 @@ class ActionScriptHelperTest extends AppCakeTestCase
             'action' => 'test'];
         $this->_targetObject->request->addParams($params);
         $result = $this->_targetObject->css([], [], false, false);
-        $expected = "\n\t<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/specific/tests/test.min.css?v=56c469e5\"/>\n";
+        $expected = "\n\t<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/specific/tests/test.min.css?v=5b6afdba\"/>\n";
         $this->assertData($expected, $result);
     }
 
@@ -335,7 +343,7 @@ class ActionScriptHelperTest extends AppCakeTestCase
             'action' => 'test'];
         $this->_targetObject->request->addParams($params);
         $result = $this->_targetObject->script([], [], false, false);
-        $expected = "\n\t<script type=\"text/javascript\" src=\"/js/specific/tests/test.min.js?v=56c48100\"></script>\n";
+        $expected = "\n\t<script type=\"text/javascript\" src=\"/js/specific/tests/test.min.js?v=5b6afdba\"></script>\n";
         $this->assertData($expected, $result);
     }
 
@@ -352,7 +360,7 @@ class ActionScriptHelperTest extends AppCakeTestCase
         $this->_targetObject->request->addParams($params);
         $this->_targetObject->_View->set('specificJS', 'spec');
         $result = $this->_targetObject->script([], [], false, false);
-        $expected = "\n\t<script type=\"text/javascript\" src=\"/js/specific/tests/test.min.js?v=56c48100\"></script>\n\t<script type=\"text/javascript\" src=\"/js/specific/tests/spec.js?v=56c48100\"></script>\n";
+        $expected = "\n\t<script type=\"text/javascript\" src=\"/js/specific/tests/test.min.js?v=5b6afdba\"></script>\n\t<script type=\"text/javascript\" src=\"/js/specific/tests/spec.js?v=5b6afdba\"></script>\n";
         $this->assertData($expected, $result);
     }
 
@@ -369,7 +377,7 @@ class ActionScriptHelperTest extends AppCakeTestCase
             'prefix' => 'admin'];
         $this->_targetObject->request->addParams($params);
         $result = $this->_targetObject->css([], [], false, true);
-        $expected = "\n\t<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/specific/tests/admin_test.min.css?v=56c469e5\"/>\n";
+        $expected = "\n\t<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/specific/tests/admin_test.min.css?v=5b6afdba\"/>\n";
         $this->assertData($expected, $result);
     }
 
@@ -386,7 +394,7 @@ class ActionScriptHelperTest extends AppCakeTestCase
             'prefix' => 'admin'];
         $this->_targetObject->request->addParams($params);
         $result = $this->_targetObject->script([], [], false, true);
-        $expected = "\n\t<script type=\"text/javascript\" src=\"/js/specific/tests/admin_test.min.js?v=56c48100\"></script>\n";
+        $expected = "\n\t<script type=\"text/javascript\" src=\"/js/specific/tests/admin_test.min.js?v=5b6afdba\"></script>\n";
         $this->assertData($expected, $result);
     }
 }
