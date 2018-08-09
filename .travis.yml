@@ -7,7 +7,7 @@ php:
 env:
   global:
     - PLUGIN_NAME=CakeTheme
-    - REQUIRE="dereuromark/cakephp-queue:^2.3.0 dereuromark/cakephp-tools:2.x-dev"
+    - REQUIRE="dereuromark/cakephp-queue:^2.3.0 dereuromark/cakephp-tools:^0.12.3"
     - DB=mysql
     - CAKE_REF=2.x
 
