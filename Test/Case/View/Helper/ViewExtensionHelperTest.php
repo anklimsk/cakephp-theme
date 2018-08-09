@@ -1525,8 +1525,8 @@ class ViewExtensionHelperTest extends AppCakeTestCase
      */
     public function testListLastInfo()
     {
-        $this->storeLocale();
-        $this->skipIf(!$this->setEngLocale(), "The English locale isn't available.");
+        date_default_timezone_set('UTC');
+        Configure::write('Config.timezone', 'UTC');
         $params = [
             [
                 [], // $lastInfo
