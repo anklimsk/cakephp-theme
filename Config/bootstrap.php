@@ -146,18 +146,6 @@ Cache::config(CAKE_THEME_CACHE_KEY_HELPERS, [
 ]);
 
 /**
-* Configuration the cache for store language code
-*
-*/
-Cache::config(CAKE_THEME_CACHE_KEY_LANG_CODE, [
-    'engine' => 'File',
-    'prefix' => $prefix,
-    'duration' => '+1 week',
-    'probability' => 100,
-    'path' => CACHE . CAKE_THEME_CACHE_KEY_LANG_CODE . DS,
-]);
-
-/**
 * Configuration the cache for store label of condition button
 *
 */
@@ -167,4 +155,16 @@ Cache::config(CAKE_THEME_CACHE_KEY_BTN_COND_LABEL, [
     'duration' => '+1 week',
     'probability' => 100,
     'path' => CACHE . CAKE_THEME_CACHE_KEY_BTN_COND_LABEL . DS,
+]);
+
+/**
+* Configuration the cache for store language code
+*
+*/
+Cache::config(CAKE_THEME_CACHE_KEY_LANG_CODE, [
+    'engine' => 'File',
+    'prefix' => $prefix,
+    'duration' => '+1 week',
+    'probability' => 100,
+    'path' => CACHE . CAKE_THEME_CACHE_KEY_LANG_CODE . DS,
 ]);
