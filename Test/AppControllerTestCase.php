@@ -74,6 +74,7 @@ class AppControllerTestCase extends ExtendControllerTestCase
         $this->applyTestConfig($path);
         Configure::write('Config.language', 'eng');
         Configure::write('Routing.prefixes', ['admin']);
+        Router::reload();
     }
 
     /**

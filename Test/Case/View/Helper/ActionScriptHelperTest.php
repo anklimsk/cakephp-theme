@@ -35,7 +35,6 @@ class ActionScriptHelperTest extends AppCakeTestCase
         $this->webRoot = Configure::read('App.www_root');
         $testWebRoot = CakePlugin::path('CakeTheme') . 'Test' . DS . 'test_app' . DS . 'webroot' . DS;
         Configure::write('App.www_root', $testWebRoot);
-        Configure::write('Routing.prefixes', ['manager', 'admin']);
     }
 
     /**
