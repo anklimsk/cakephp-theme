@@ -17,7 +17,7 @@
         "anklimsk/cakephp-extended-test": "*",
         "codaxis/cakephp-bootstrap3-helpers": "^1.2",
         "markstory/asset_compress": "^0.25",
-        "packagist/yuicompressor-bin": "^v2.4.8"
+        "packagelist/yuicompressor-bin": "^v2.4.8"
     },
     "support": {
         "source": "https://github.com/anklimsk/cakephp-theme"
