@@ -35,6 +35,11 @@ if (!isset($projectName)) {
     }
 }
 
+$useUserInfo = false;
+if (CakePlugin::loaded('CakeLdap')) {
+    $useUserInfo = true;
+}
+
 $useNavbarContainerFluid = false;
 
 if (!isset($projectLogo)) {
