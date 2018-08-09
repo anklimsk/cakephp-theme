@@ -65,8 +65,7 @@ class CakeThemeAppController extends AppController
         'Html',
         'Form' => [
             'className' => 'CakeTheme.ExtBs3Form'
-        ],
-        'CakeSearchInfo.Search',
+        ]
     ];
 
     /**

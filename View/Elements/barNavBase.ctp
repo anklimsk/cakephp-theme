@@ -10,10 +10,16 @@
 
     App::uses('Hash', 'Utility');
     $this->loadHelper('CakeTheme.ViewExtension');
-    $this->loadHelper('CakeSearchInfo.Search');
 
 if (!isset($showSearchForm)) {
     $showSearchForm = false;
+}
+if ($showSearchForm) {
+    if (CakePlugin::loaded('CakeSearchInfo')) {
+        $this->loadHelper('CakeSearchInfo.Search');
+    } else {
+        $showSearchForm = false;
+    }
 }
 
 if (!isset($useNavbarContainerFluid)) {
