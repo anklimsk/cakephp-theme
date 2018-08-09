@@ -10,7 +10,7 @@
 
 App::uses('Bs3FormHelper', 'Bs3Helpers.View/Helper');
 App::uses('FormHelper', 'View/Helper');
-App::uses('Language', 'CakeTheme.Utility');
+App::uses('Language', 'CakeBasicFunctions.Utility');
 App::uses('Hash', 'Utility');
 
 /**

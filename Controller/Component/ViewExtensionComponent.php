@@ -20,7 +20,7 @@ App::uses('Component', 'Controller');
 App::uses('Hash', 'Utility');
 App::uses('ClassRegistry', 'Utility');
 App::uses('CakeSession', 'Model/Datasource');
-App::uses('Language', 'CakeTheme.Utility');
+App::uses('Language', 'CakeBasicFunctions.Utility');
 
 /**
  * ViewExtension Component.

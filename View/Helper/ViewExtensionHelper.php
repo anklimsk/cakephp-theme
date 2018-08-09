@@ -12,7 +12,7 @@
 App::uses('CakeThemeAppHelper', 'CakeTheme.View/Helper');
 App::uses('Hash', 'Utility');
 App::uses('NumberTextLib', 'Tools.Utility');
-App::uses('Language', 'CakeTheme.Utility');
+App::uses('Language', 'CakeBasicFunctions.Utility');
 
 /**
  * View extension helper used for create extended view element.
