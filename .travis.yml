@@ -25,7 +25,7 @@ before_script:
   - travis_wait ../travis/before_script.sh
   - if [ -f "../cakephp/app/Config/core.php" ]; then sed -i -r "s/(Configure::write\('Security\.salt', ')[0-9a-z]+('\);)/\1d1c97797953ed55c54ba6037158d2b0c3bf21471\2/i" ../cakephp/app/Config/core.php; fi
   - if [ -f "../cakephp/app/Config/core.php" ]; then sed -i -r "s/(Configure::write\('Security\.cipherSeed', ')[0-9]+('\);)/\118424236609940891573169173047\2/i" ../cakephp/app/Config/core.php; fi
-  - if [ -f "../cakephp/app/Config/database.php" ]; then sed -i -r "s/\/\/'(encoding' => 'utf8')/\1/" ../cakephp/app/Config/database.php; fi
+  - if [ -f "../cakephp/app/Config/database.php" ]; then sed -i -r "s/\/\/('encoding' => 'utf8')/\1/" ../cakephp/app/Config/database.php; fi
 
 script:
   - ../travis/script.sh
