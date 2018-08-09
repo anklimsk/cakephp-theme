@@ -376,7 +376,11 @@ class Filter extends CakeThemeAppModel
                     $data = array_shift($data);
                 }
 
-                $conditions[$fieldFullName . ' like'] = $prefix . $data . '%';
+                if ($fieldType === 'virtual') {
+                    $conditions[$fieldFullName . ' like'] = $prefix . $data . '%';
+                } else {
+                    $conditions['LOWER(' . $fieldFullName . ') like'] = mb_strtolower($prefix . $data . '%');
+                }
                 break;
             default:
                 return false;

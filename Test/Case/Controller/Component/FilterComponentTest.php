@@ -118,7 +118,7 @@ class FilterComponentTest extends AppCakeTestCase
         $this->Filter->initialize($this->Controller);
         $result = $this->Filter->getFilterConditions();
         $expected = [
-            'EmployeeTest.last_name like' => '%Абр%'
+            'LOWER(EmployeeTest.last_name) like' => '%абр%'
         ];
         $this->assertData($expected, $result);
 

@@ -175,7 +175,19 @@ class FilterTest extends AppCakeTestCase
                 [
                     2 => [
                         'EmployeeTest' => [
-                            'last_name' => 'test'
+                            'last_name' => 'Test'
+                        ]
+                    ],
+                ], // $filterData
+                [], // $filterConditions
+                null, // $plugin
+                0, // $limit
+            ],
+            [
+                [
+                    [
+                        'EmployeeTest' => [
+                            'name' => 'Test'
                         ]
                     ],
                 ], // $filterData
@@ -309,7 +321,10 @@ class FilterTest extends AppCakeTestCase
             [],
             [],
             [
-                'EmployeeTest.last_name like' => '%test%'
+                'LOWER(EmployeeTest.last_name) like' => '%test%'
+            ],
+            [
+                'EmployeeTest.name like' => '%Test%'
             ],
             [
                 'EmployeeTest.birthday <=' => '1981-01-15'
@@ -317,7 +332,7 @@ class FilterTest extends AppCakeTestCase
             [
                 'OR' => [
                     [
-                        'EmployeeTest.position like' => '%инж%'
+                        'LOWER(EmployeeTest.position) like' => '%инж%'
                     ],
                     [
                         'EmployeeTest.birthday <>' => '1975-05-12'
@@ -338,15 +353,15 @@ class FilterTest extends AppCakeTestCase
                 ]
             ],
             [
-                'EmployeeTest.mail like' => '%some text%'
+                'LOWER(EmployeeTest.mail) like' => '%some text%'
             ],
             [
                 'OR' => [
                     [
-                        'EmployeeTest.position like' => '%some text%'
+                        'LOWER(EmployeeTest.position) like' => '%some text%'
                     ],
                     [
-                        'EmployeeTest.position like' => '%pos%'
+                        'LOWER(EmployeeTest.position) like' => '%pos%'
                     ]
                 ]
             ],
@@ -421,14 +436,14 @@ class FilterTest extends AppCakeTestCase
             ],
             [
                 'EmployeeTest.position', // $field
-                'инж', // $data
+                'Инж', // $data
                 '', // $conditionSign
                 null, // $plugin
                 false, // $isAutocomplete
             ],
             [
                 'EmployeeTest.position', // $field
-                'инж', // $data
+                'Инж', // $data
                 '', // $conditionSign
                 null, // $plugin
                 true, // $isAutocomplete
@@ -477,7 +492,7 @@ class FilterTest extends AppCakeTestCase
             ],
             [
                 'EmployeeTest.first_name', // $field
-                'бал', // $data
+                'бАл', // $data
                 'ne', // $conditionSign
                 null, // $plugin
                 true, // $isAutocomplete
@@ -492,13 +507,13 @@ class FilterTest extends AppCakeTestCase
             false,
             false,
             [
-                'EmployeeTest.position like' => '%инж%'
+                'LOWER(EmployeeTest.position) like' => '%инж%'
             ],
             [
-                'EmployeeTest.position like' => '%инж%'
+                'LOWER(EmployeeTest.position) like' => '%инж%'
             ],
             [
-                'EmployeeTest.position like' => 'инж%'
+                'LOWER(EmployeeTest.position) like' => 'инж%'
             ],
             [
                 'EmployeeTest.manager' => '1'
@@ -519,7 +534,7 @@ class FilterTest extends AppCakeTestCase
                 'EmployeeTest.manager' => '1'
             ],
             [
-                'EmployeeTest.first_name like' => 'бал%'
+                'LOWER(EmployeeTest.first_name) like' => 'бал%'
             ]
         ];
 
