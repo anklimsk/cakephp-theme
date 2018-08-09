@@ -36,6 +36,7 @@ class ActionScriptHelperTest extends AppCakeTestCase
         $testWebRoot = CakePlugin::path('CakeTheme') . 'Test' . DS . 'test_app' . DS . 'webroot' . DS;
 
         date_default_timezone_set('UTC');
+        Configure::write('Config.timezone', 'UTC');
         Configure::write('App.www_root', $testWebRoot);
     }
 
