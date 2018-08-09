@@ -27,6 +27,7 @@ before_script:
   - if [ -f "../cakephp/app/Config/core.php" ]; then sed -i -r "s/(Configure::write\('Security\.cipherSeed', ')[0-9]+('\);)/\118424236609940891573169173047\2/i" ../cakephp/app/Config/core.php; fi
   - if [ -f "../cakephp/app/Config/database.php" ]; then sed -i -r "s/\/\/('encoding' => 'utf8')/\1/g" ../cakephp/app/Config/database.php; fi
   - if [ -f "../cakephp/app/Plugin/CakeTheme/Config/asset_compress.local.ini" ]; then cp "../cakephp/app/Plugin/CakeTheme/Config/asset_compress.local.ini" "../cakephp/app/Config/asset_compress.ini"; fi
+  - if [ -f "../cakephp/app/Config/database.php" ]; then cat ../cakephp/app/Config/database.php; fi
 
 script:
   - ../travis/script.sh
