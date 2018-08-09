@@ -57,15 +57,14 @@ class ExtendQueuedTask extends QueuedTask
     {
         $jobType = (string)$jobType;
         $queueLength = 0;
-        $modelQueuedTask = ClassRegistry::init('Queue.QueuedTask');
-        $pendingStats = $modelQueuedTask->getPendingStats();
+        $pendingStats = $this->getPendingStats();
         if (empty($pendingStats)) {
             return $queueLength;
         }
 
         foreach ($pendingStats as $pendingStatsItem) {
-            if ((!empty($jobType) && (strcmp($pendingStatsItem[$modelQueuedTask->alias]['jobtype'], $jobType) !== 0)) ||
-                ($pendingStatsItem[$modelQueuedTask->alias]['status'] !== 'NOT_STARTED')) {
+            if ((!empty($jobType) && (strcmp($pendingStatsItem[$this->alias]['jobtype'], $jobType) !== 0)) ||
+                ($pendingStatsItem[$this->alias]['status'] !== 'NOT_STARTED')) {
                 continue;
             }
 

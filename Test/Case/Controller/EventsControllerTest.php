@@ -26,6 +26,23 @@ class EventsControllerTest extends AppControllerTestCase
     ];
 
     /**
+     * Setup the test case, backup the static object values so they can be restored.
+     * Specifically backs up the contents of Configure and paths in App if they have
+     * not already been backed up.
+     *
+     * Actions:
+     * - Checking Plugin 'Queue' is loaded.
+     *
+     * @return void
+     */
+    public function setUp()
+    {
+        $this->skipIf(!CakePlugin::loaded('Queue'), "Plugin 'Queue' is not loaded");
+
+        parent::setUp();
+    }
+
+    /**
      * testSeecfgGet method
      *
      * @return void

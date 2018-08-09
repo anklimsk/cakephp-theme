@@ -24,6 +24,8 @@ class ExtendQueuedTaskTest extends AppCakeTestCase
      */
     public function setUp()
     {
+        $this->skipIf(!CakePlugin::loaded('Queue'), "Plugin 'Queue' is not loaded");
+
         parent::setUp();
         $this->_targetObject = ClassRegistry::init('CakeTheme.ExtendQueuedTask');
     }
