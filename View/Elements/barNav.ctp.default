@@ -101,7 +101,7 @@ if ($useUserInfo && $this->UserInfo->checkUserRole(USER_ROLE_ADMIN) && CakePlugi
 
 }
 
-if (!$isExternalAuth) {
+if (!$isExternalAuth && CakePlugin::loaded('CakeLdap')) {
     $iconList[] = $this->ViewExtension->menuItemLink(
         'fas fa-sign-out-alt fa-lg',
         __('Logout'),
