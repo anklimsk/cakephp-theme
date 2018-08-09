@@ -15,10 +15,8 @@
         "anklimsk/cakephp-basic-functions": "*",
         "anklimsk/cakephp-config-plugin": "*",
         "anklimsk/cakephp-extended-test": "*",
-        "dereuromark/cakephp-queue": "^2.3.0",
         "codaxis/cakephp-bootstrap3-helpers": "^1.2",
-        "dereuromark/cakephp-tools": "2.x-dev"
-        
+        "packagelist/yuicompressor-bin": "^2.4.8"
     },
     "support": {
         "source": "https://github.com/anklimsk/cakephp-theme"
