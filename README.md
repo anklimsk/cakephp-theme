@@ -11,28 +11,28 @@ Full UI theme for CakePHP
 - Creating tour of the application;
 - Filter for table data with a group action, data export and printing;
 - Pagination controls elements:
-* Change the limit of entries on the page;
-* Go to the page;
-* Load more button (display as list).
+  * Change the limit of entries on the page;
+  * Go to the page;
+  * Load more button (display as list).
 - Creation the links:
-* with confirmation;
-* with the request `AJAX` or `PJAX`;
-* with the `AJAX`request without render result (only Flash message);
-* with display result in a modal or popup window;
-* with progress bar from queue of tasks;
-* with disabled state;
-* with `Lightbox` gallery.
+  * with confirmation;
+  * with the request `AJAX` or `PJAX`;
+  * with the `AJAX`request without render result (only Flash message);
+  * with display result in a modal or popup window;
+  * with progress bar from queue of tasks;
+  * with disabled state;
+  * with `Lightbox` gallery.
 - Creating forms with tabs, with an progress bar of filling the input;
 - Creating forms for AJAX upload files;
 - Creating forms inputs:
-* select with search and `AJAX` loading list;
-* date and time picker;
-* country flag picker;
-* spinner input;
-* drop down input;
-* checkbox and radio button;
-* password input with checking Caps Lock;
-* text input with autocomplete, input mask or focus.
+  * select with search and `AJAX` loading list;
+  * date and time picker;
+  * country flag picker;
+  * spinner input;
+  * drop down input;
+  * checkbox and radio button;
+  * password input with checking Caps Lock;
+  * text input with autocomplete, input mask or focus.
 - Creating page header with small menu with typical actions;
 - Creating tooltips;
 - Creating time ago block;
