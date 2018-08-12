@@ -66,18 +66,18 @@ Where:
 - `$url` - Cake-relative URL or array of URL parameters, or external URL (starts with http://)
 - `$options` - HTML options for button element
   List of values option `action-type`:
-* `confirm`: create link with confirmation action;
-* `confirm-post`: create link with confirmation action and `POST` request;
-* `post`: create link with `POST` request;
-* `modal`: create link with opening result in modal window.
+  * `confirm`: create link with confirmation action;
+  * `confirm-post`: create link with confirmation action and `POST` request;
+  * `post`: create link with `POST` request;
+  * `modal`: create link with opening result in modal window.
 
 ## Creating `Modal` and `Popup` window
 
 - Include component `CakeTheme.ViewExtension` in your `Controller`;
 - Place the view file in the subdirectory `mod` or `pop`;
 - In `Modal` and `Popup` view file use next `CSS` classes:
-* hide element: .hide-popup, .hide-modal, .hide-popup-modal;
-* show element: .show-popup, .show-modal, .show-popup-modal
+  * hide element: `.hide-popup`, `.hide-modal`, `.hide-popup-modal`;
+  * show element: `.show-popup`, `.show-modal`, `.show-popup-modal`.
 - Checking the request is `Modal` or `Popup`:
 ```php
 if ($this->request->id('modal')) {

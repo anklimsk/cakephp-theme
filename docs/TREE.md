@@ -25,7 +25,7 @@ echo $this->AssetCompress->script('CakeTheme.tree', ['block' => 'script']);
 
 $expandClass = '';
 if ($expandAll) {
-$expandClass = ' bonsai-expand-all';
+    $expandClass = 'bonsai-expand-all';
 }
 
 $treeOptions = [
@@ -54,8 +54,8 @@ echo $tree;
 - Include the `Move` component:
 ```php
 public $components = [
+    'CakeTheme.Move' => ['model' => 'ModelName'],
     ...,
-    'CakeTheme.Move' => ['model' => 'ModelName']
 ];
 ```
 - Include the `ViewExtension` helper:
@@ -105,9 +105,9 @@ public function drop()
 - Include behaviors `Tree` and `Move`:
 ```php
 public $actsAs = [
-    ...,
     'Tree',
-    'CakeTheme.Move'
+    'CakeTheme.Move',
+    ...,
 ];
 ```
 - If needed, add callback functions:

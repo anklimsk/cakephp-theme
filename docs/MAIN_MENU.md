@@ -79,10 +79,10 @@ Where:
 - `$titleText` - Title of menu label
 - `$url` - Cake-relative URL or array of URL parameters, or external URL (starts with http://)
 - `$options` HTML options for button element. List of values option `action-type`:
-* `confirm`: create link with confirmation action;
-* `confirm-post`: create link with confirmation action and `POST` request;
-* `post`: create link with POST request;
-* `modal`: create link with opening result in modal window.
+  * `confirm`: create link with confirmation action;
+  * `confirm-post`: create link with confirmation action and `POST` request;
+  * `post`: create link with POST request;
+  * `modal`: create link with opening result in modal window.
 
 ## Example of navigation bar
 ```php

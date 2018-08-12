@@ -63,7 +63,7 @@ public function beforeFilter()
     parent::beforeFilter();
 }
 ```
-- add an action method `upload`:
+- Add an action method `upload`:
 ```php
 /**
  * Action `upload`. Used to upload file
@@ -154,9 +154,9 @@ Where:
 - `$fieldName` This should be `Modelname.fieldname`
 - `$text` Text that will appear in the label field. If `$text` is left undefined
  the text will be inflected from the `$fieldName`. If `$text` is array use format:
- * key `0`: value - Text of label;
- * key `1`: value - Tooltip of label;
- * key `2`: value - Postfix text of label.
+  * key `0`: value - Text of label;
+  * key `1`: value - Tooltip of label;
+  * key `2`: value - Postfix text of label.
 - `$options` An array of HTML attributes, or a string, to be used as a class name.
 
 ### Text input with mask
@@ -202,12 +202,12 @@ echo $this->Form->dateTimeSelect($fieldName, $options);
 Where:
 - `$fieldName` Name of a field, like this "Modelname.fieldname"
 - `$options` Array of HTML attributes and widget options:
-* `date-format` - Date format, in js moment format;
-* `date-locale` - Current locale, e.g. `en`;
-* `icon-type` - Icon for button, e.g. `date` or `time`;
-* `widget-position-horizontal` - Horizontal position of widget: `auto`, `left` or `right`;
-* `widget-position-vertical` - Vertical position of widget: `auto`, `top` or `bottom`.
-*  Set to false form disable button.
+  * `date-format` - Date format, in js moment format;
+  * `date-locale` - Current locale, e.g. `en`;
+  * `icon-type` - Icon for button, e.g. `date` or `time`;
+  * `widget-position-horizontal` - Horizontal position of widget: `auto`, `left` or `right`;
+  * `widget-position-vertical` - Vertical position of widget: `auto`, `top` or `bottom`.
+  *  Set to false form disable button.
 See https://github.com/Eonasdan/bootstrap-datetimepicker
 
 ### Spinner input
@@ -219,16 +219,16 @@ echo $this->Form->spin($fieldName, $options);
 Where:
 - `$fieldName` Name of a field, like this "Modelname.fieldname"
 - `$options` Array of HTML attributes and widget options:
-* `min` - Minimum value;
-* `max` - Maximum value;
-* `step` - Incremental/decremental step on up/down change;
-* `decimals` - Number of decimal points;
-* `maxboostedstep` - Maximum step when boosted;
-* `verticalbuttons` -    Enables the traditional up/down buttons;
-* `prefix` - Text before the input;
-* `prefix_extraclass` - Extra class(es) for prefix;
-* `postfix` - Text after the input;
-* `postfix_extraclass` - Extra class(es) for postfix.
+  * `min` - Minimum value;
+  * `max` - Maximum value;
+  * `step` - Incremental/decremental step on up/down change;
+  * `decimals` - Number of decimal points;
+  * `maxboostedstep` - Maximum step when boosted;
+  * `verticalbuttons` -    Enables the traditional up/down buttons;
+  * `prefix` - Text before the input;
+  * `prefix_extraclass` - Extra class(es) for prefix;
+  * `postfix` - Text after the input;
+  * `postfix_extraclass` - Extra class(es) for postfix.
 
 ### Select with search and `AJAX` loading list
 1. In your `Controller`:
@@ -297,9 +297,9 @@ public function getListByQuery($query = null)
         return $result;
     }
 
-	$conditions = ['LOWER(' . $this->alias . '.some_field) like'] = mb_strtolower($query . '%');
-	$recursive = -1;
-	$result = $this->find('list', compact('conditions', 'recursive'))
+    $conditions = ['LOWER(' . $this->alias . '.some_field) like'] = mb_strtolower($query . '%');
+    $recursive = -1;
+    $result = $this->find('list', compact('conditions', 'recursive'))
 
     return $result;
 }
@@ -307,14 +307,14 @@ public function getListByQuery($query = null)
 3. In your `View` file add:
 ```php
 echo $this->Form->select(
-	'SomeModel.field',
-	[
-    	'options' => $managers,
-    	'empty' => __('Select data'),
-    	'data-abs-ajax-url' => $this->Html->url(['controller' => 'ctrl', 'action' => 'list', 'ext' => 'json']),
-    	'data-abs-ajax-data' => json_encode(['q' => '{{{q}}}']),
-    	'data-abs-min-length' => 2,
-	]
+    'SomeModel.field',
+    [
+        'options' => $managers,
+        'empty' => __('Select data'),
+        'data-abs-ajax-url' => $this->Html->url(['controller' => 'ctrl', 'action' => 'list', 'ext' => 'json']),
+        'data-abs-ajax-data' => json_encode(['q' => '{{{q}}}']),
+        'data-abs-min-length' => 2,
+    ]
 );
 
 ```
@@ -328,7 +328,7 @@ echo $this->Form->flag($fieldName, $options);
 Where:
 - `$fieldName` Name of a field, like this "Modelname.fieldname"
 - `$options` Array of HTML attributes and widget options:
-* `options` - array of the OPTION elements (as 'value'=>'Text' pairs) to be used in the
+  * `options` - array of the OPTION elements (as 'value'=>'Text' pairs) to be used in the
 See https://github.com/blazeworx/flagstrap
 
 ### Text input with autocomplete
@@ -341,9 +341,9 @@ echo $this->Form->autocomplete($fieldName, $options);
 Where:
 - `$fieldName` Name of a field, like this "Modelname.fieldname"
 - `$options` Array of HTML attributes and widget options:
-* `type` - Type for autocomplete suggestions, e.g. Model.Field;
-* `plugin` - Plugin name for autocomplete field;
-* `url` - URL for autocomplete (default: /cake_theme/filter/autocomplete.json);
-* `local` - Local data for autocomplete;
-* `min-length` - minimal length of query string.
+  * `type` - Type for autocomplete suggestions, e.g. Model.Field;
+  * `plugin` - Plugin name for autocomplete field;
+  * `url` - URL for autocomplete (default: /cake_theme/filter/autocomplete.json);
+  * `local` - Local data for autocomplete;
+  * `min-length` - minimal length of query string.
 See https://github.com/bassjobsen/Bootstrap-3-Typeahead

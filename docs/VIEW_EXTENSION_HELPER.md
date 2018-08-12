@@ -166,13 +166,13 @@ echo $this->ViewExtension->barState($stateData);
 ```
 Where:
 - `$stateData` - Array of state in format:
-* key `stateName`, value: name of state;
-* key `stateId`, value: ID of state;
-* `amount`, value: amount elements in this state
-* key `stateUrl`, value: url for state, e.g.:
-  array('controller' => 'posts', 'action' => 'index', '?' => array('data[FilterData][0][Post][state_id]' => '2')) [Not necessary]
-* key `class`: ID of state, value: class of state for progress bar,
-  e.g.: 'progress-bar-danger progress-bar-striped' [Not necessary]
+  * key `stateName`, value: name of state;
+  * key `stateId`, value: ID of state;
+  * `amount`, value: amount elements in this state
+  * key `stateUrl`, value: url for state, e.g.:
+    array('controller' => 'posts', 'action' => 'index', '?' => array('data[FilterData][0][Post][state_id]' => '2')) [Not necessary]
+  * key `class`: ID of state, value: class of state for progress bar,
+    e.g.: 'progress-bar-danger progress-bar-striped' [Not necessary]
 
 ## Creating a list of the most recently modified data
 
@@ -182,9 +182,9 @@ echo $this->ViewExtension->listLastInfo($lastInfo, $labelList, $controllerName, 
 ```
 Where:
 - `$lastInfo` - Array of last information in format:
-* key `label`, value: label of list item;
-* key `modified`, value: date and time of last modification;
-* key `id`, value: ID of record.
+  * key `label`, value: label of list item;
+  * key `modified`, value: date and time of last modification;
+  * key `id`, value: ID of record.
 - `$labelList` - Label of list
 - `$controllerName` -  Name of controller for viewing
 - `$actionName` - Name of controller action for viewing

@@ -16,16 +16,16 @@ $employees = $this->Paginator->paginate('Employee', $conditions);
 ```php
 echo $this->Filter->createFilterForm($formInputs, $plugin, $usePrint, $exportType);
 ```
-where `$formInputs` - array of fields uses as table columns in format: 
-    key - `model.field`, value - form input options, or value - `model.field` for default form input;
-    - if pagination field is not equal filter form input field, set option:
-        `[..., 'pagination-field' => 'model.field']`;
-    - for disable pagination and filter form input, use option: `[..., 'disabled' => true]`;
-    - for escaping of title and attributes set escape to false to disable: `[..., 'escape' => false]`;
-    - for using select input, use `[..., 'options' => [1 => 'Some val. 1', 2 => 'Some val. 2']]`;
-`$plugin` - Name of plugin for target model of filter;
-`$usePrint` -  If True, display Print button (default True);
-`$exportType` - Extension of exported file, for display Export button.
+Where:
+- `$formInputs` - array of fields uses as table columns in format: 
+  * key - `model.field`, value - form input options, or value - `model.field` for default form input;
+    - If pagination field is not equal filter form input field, set option: `[..., 'pagination-field' => 'model.field']`;
+    - For disable pagination and filter form input, use option: `[..., 'disabled' => true]`;
+    - For escaping of title and attributes set escape to false to disable: `[..., 'escape' => false]`;
+    - For using select input, use `[..., 'options' => [1 => 'Some val. 1', 2 => 'Some val. 2']]`;
+- `$plugin` - Name of plugin for target model of filter;
+- `$usePrint` -  If True, display Print button (default True);
+- `$exportType` - Extension of exported file, for display Export button.
 3. After close tag `</table>` add:
 ```php
 <?php echo $this->Filter->closeFilterForm(); ?>
@@ -57,7 +57,7 @@ echo $this->Html->div('confirm-form-block', $this->fetch('confirm-form'));
 <?php endif; ?>
             <tbody>
 ```
-2 . In your `Controller` add:
+2. In your `Controller` add:
 ```php
 public function index()
 {
@@ -112,9 +112,11 @@ public function processGroupAction($groupAction = null, $conditions = null)
 
 ## Set autocomplete limit
 
-add in `AppController::beforeFilter()`:
-        Configure::write('ViewExtension.AutocompleteLimit', $limit);
-        where $limit - value of limit for autocomplete.
+In your `AppController` add to method `beforeFilter()`:
+```php
+Configure::write('ViewExtension.AutocompleteLimit', $limit);
+```
+Where `$limit` - value of limit for autocomplete.
 
 ## Example of `View` file:
 ```php
