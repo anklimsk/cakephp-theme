@@ -56,10 +56,6 @@ if (!$showMainMenu) {
 
     return;
 }
-$iconList[] = $this->ViewExtension->menuItemLink('fas fa-align-justify fa-lg',
-    __('Logs'), ['controller' => 'logs', 'action' => 'index', 'plugin' => 'cake_theme', 'prefix' => false],
-    ['class' => 'app-tour-main-menu-logs']
-);
 
 if (CakePlugin::loaded('CakeLdap')) {
     $menuItems = [
