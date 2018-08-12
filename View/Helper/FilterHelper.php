@@ -251,8 +251,8 @@ class FilterHelper extends CakeThemeAppHelper
             ],
             'string' => [
                 'div' => false,
-                'data-toggle' => 'autocomplete',
-                'data-autocomplete-url' => $this->url([
+                'type' => 'autocomplete',
+                'url' => $this->url([
                     'controller' => 'filter',
                     'action' => 'autocomplete',
                     'plugin' => 'cake_theme',
