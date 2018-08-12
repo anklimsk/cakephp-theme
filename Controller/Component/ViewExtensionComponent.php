@@ -284,8 +284,8 @@ class ViewExtensionComponent extends Component
         } elseif ($redirect === true) {
             $redirect = $this->_controller->request->here(true);
         }
-        if (empty($redirect) || $this->_controller->RequestHandler->prefers('pop') ||
-            $this->_controller->RequestHandler->prefers('prt')) {
+        if (empty($redirect) || $this->_controller->request->is('popup') ||
+            $this->_controller->request->is('print')) {
             return false;
         }
         $cacheKey = $this->_getSessionKeyRedirect($key);
