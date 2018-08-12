@@ -38,13 +38,13 @@ $config['CakeTheme'] = [
         //  See 'Step Options' http://bootstraptour.com/api/
         'Steps' => [
 /*
-            array(
+            [
                 'path' => '/',
                 'element' => 'ul.nav',
                 'title' => 'Main menu',
                 'content' => 'Main menu of application.',
                 'onNext' => 'alert("Next step is called");'
-            ),
+            ],
 */
         ]
     ],
@@ -82,12 +82,12 @@ $config['CakeTheme'] = [
         ],
 /*
         // PHP Unoconv
-        'Unoconv' => array(
+        'Unoconv' => [
             // The timeout for the underlying process.
             'timeout' => 30,
             // The path (or an array of paths) for a custom binary.
             'binaries' => '/opt/local/unoconv/bin/unoconv'
-        )
+        ]
 */
     ]
 ];
