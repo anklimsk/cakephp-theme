@@ -202,6 +202,19 @@ class ExtBs3FormHelper extends Bs3FormHelper
                 'data-button-type' => 'btn-default form-control',
             ]
         ];
+        $result['autocomplete'] = [
+            'defaultOpt' => [
+                'data-toggle' => 'autocomplete',
+                'label' => false,
+            ],
+            'extraOpt' => [
+                'type',
+                'plugin',
+                'url',
+                'local',
+                'min-length'
+            ]
+        ];
         $result['createUploadForm'] = [
             'type' => 'file',
             'default' => false,
@@ -689,6 +702,50 @@ class ExtBs3FormHelper extends Bs3FormHelper
             $this->Html->div(null, '', $divOptions + $divOptionsDefault) . $errors);
 
         return $result;
+    }
+
+    /**
+     * Creates text input with autocomplete.
+     *
+     * ### Options:
+     *
+     * - `type` - Type for autocomplete suggestions, e.g. Model.Field;
+     * - `plugin` - Plugin name for autocomplete field;
+     * - `url` - URL for autocomplete;
+     * - `local` - Local data for autocomplete;
+     * - `min-length` - minimal length of query string.
+     *
+     * @param string $fieldName Name of a field, like this "Modelname.fieldname"
+     * @param array $options Array of HTML attributes.
+     * @return string An HTML text input element.
+     * @see {@link https://github.com/bassjobsen/Bootstrap-3-Typeahead} Bootstrap 3 Typeahead
+     */
+    public function autocomplete($fieldName, $options = [])
+    {
+        if (!is_array($options)) {
+            $options = [];
+        }
+        $defaultOptions = $this->_getOptionsForElem('autocomplete.defaultOpt');
+        $options = $defaultOptions + $options;
+        $listExtraOptions = $this->_getOptionsForElem('autocomplete.extraOpt');
+        $this->_prepareExtraOptions($options, $listExtraOptions, 'data-autocomplete-');
+
+        if (!isset($options['data-autocomplete-url']) && !isset($options['data-autocomplete-local'])) {
+            $options['data-autocomplete-url'] = $this->url([
+                'controller' => 'filter',
+                'action' => 'autocomplete',
+                'plugin' => 'cake_theme',
+                'ext' => 'json'
+            ]);
+        }
+        if (isset($options['data-autocomplete-local']) && !empty($options['data-autocomplete-local'])) {
+            if (!is_array($options['data-autocomplete-local'])) {
+                $options['data-autocomplete-local'] = [$options['data-autocomplete-local']];
+            }
+            $options['data-autocomplete-local'] = json_encode($options['data-autocomplete-local']);
+        }
+
+        return $this->text($fieldName, $options);
     }
 
     /**

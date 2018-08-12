@@ -394,6 +394,50 @@ class ExtBs3FormHelperTest extends AppCakeTestCase
     }
 
     /**
+     * testAutocomplete method
+     *
+     * @return void
+     */
+    public function testAutocomplete()
+    {
+        $this->_targetObject->create('EmployeeTest');
+        $params = [
+            [
+                '', // $fieldName
+                [], // $options
+            ],
+            [
+                'EmployeeTest.position', // $fieldName
+                [
+                    'title' => 'Some title',
+                    'min-length' => '2',
+                    'local' => ['Водитель', 'Ведущий инженер']
+                ], // $options
+            ],
+            [
+                'EmployeeTest.position', // $fieldName
+                [
+                    'type' => 'EmployeeTest.mail',
+                ], // $options
+            ],
+            [
+                'EmployeeTest.position', // $fieldName
+                [
+                    'type' => 'EmployeeTest.position',
+                    'url' => '/some_controller/autocompl.json'
+                ], // $options
+            ],
+        ];
+        $expected = [
+            '<input name="data[EmployeeTest]" data-toggle="autocomplete" data-autocomplete-url="/cake_theme/filter/autocomplete.json" type="text" id="EmployeeTest"/>',
+            '<input name="data[EmployeeTest][position]" data-toggle="autocomplete" title="Some title" data-autocomplete-min-length="2" data-autocomplete-local="[&quot;\u0412\u043e\u0434\u0438\u0442\u0435\u043b\u044c&quot;,&quot;\u0412\u0435\u0434\u0443\u0449\u0438\u0439 \u0438\u043d\u0436\u0435\u043d\u0435\u0440&quot;]" type="text" id="EmployeeTestPosition"/>',
+            '<input name="data[EmployeeTest][position]" data-toggle="autocomplete" data-autocomplete-type="EmployeeTest.mail" data-autocomplete-url="/cake_theme/filter/autocomplete.json" type="text" id="EmployeeTestPosition"/>',
+            '<input name="data[EmployeeTest][position]" data-toggle="autocomplete" data-autocomplete-type="EmployeeTest.position" data-autocomplete-url="/some_controller/autocompl.json" type="text" id="EmployeeTestPosition"/>',
+        ];
+        $this->runClassMethodGroup('autocomplete', $params, $expected);
+    }
+
+    /**
      * testCreateUploadForm method
      *
      * @return void
