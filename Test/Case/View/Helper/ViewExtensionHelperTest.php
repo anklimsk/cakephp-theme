@@ -467,6 +467,48 @@ class ViewExtensionHelperTest extends AppCakeTestCase
     }
 
     /**
+     * testRequestOnlyLinkLink method
+     *
+     * @return void
+     */
+    public function testRequestOnlyLinkLink()
+    {
+        $params = [
+            [
+                'Test title', // $title
+                '', // $url
+                [], // $options
+            ],
+            [
+                'Test title', // $title
+                '/test/act', // $url
+                [], // $options
+            ],
+            [
+                'Test title', // $title
+                '/test/act', // $url
+                '', // $options
+            ],
+            [
+                'Some title', // $title
+                [
+                    'controller' => 'some_controller',
+                    'action' => 'some_action'
+                ], // $url
+                ['title' => 'Some title'], // $options
+            ],
+        ];
+        $expected = [
+            '<a href="/" data-toggle="request-only">Test title</a>',
+            '<a href="/test/act" data-toggle="request-only">Test title</a>',
+            '<a href="/test/act" data-toggle="request-only">Test title</a>',
+            '<a href="/some_controller/some_action" title="Some title" data-toggle="request-only">Some title</a>'
+        ];
+        $this->runClassMethodGroup('requestOnlyLink', $params, $expected);
+    }
+
+
+    /**
      * testPjaxLink method
      *
      * @return void

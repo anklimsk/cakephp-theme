@@ -758,6 +758,19 @@ class ViewExtensionHelper extends CakeThemeAppHelper
     }
 
     /**
+     * Return link used AJAX request without render result.
+     *
+     * @param string $title The content to be wrapped by `<a>` tags.
+     * @param string|array $url Cake-relative URL or array of URL parameters, or external URL (starts with http://)
+     * @param array|string $options HTML options for link element
+     * @return string An `<a />` element.
+     */
+    public function requestOnlyLink($title, $url = null, $options = [])
+    {
+        return $this->_createLink('request-only', $title, $url, $options);
+    }
+
+    /**
      * Return link used PJAX request.
      *
      * @param string $title The content to be wrapped by `<a>` tags.
