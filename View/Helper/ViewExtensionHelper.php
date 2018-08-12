@@ -1582,7 +1582,7 @@ class ViewExtensionHelper extends CakeThemeAppHelper
     /**
      * Return number as text.
      *
-     * @param array $number Number for processing
+     * @param string $number Number for processing
      * @param string $langCode Languge code in format `ISO 639-1` or `ISO 639-2`
      * @return string|bool Return number as text, or False on failure.
      */
