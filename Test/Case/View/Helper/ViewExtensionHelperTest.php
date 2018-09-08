@@ -2243,6 +2243,62 @@ class ViewExtensionHelperTest extends AppCakeTestCase
     }
 
     /**
+     * testCollapsibleList method
+     *
+     * @return void
+     */
+    public function testCollapsibleList()
+    {
+        $params = [
+            [
+                [], // $listData
+                10, // $showLimit
+                '', // $listClass
+                'ul', // $showLimit
+            ],
+            [
+                [
+                    'Item 1',
+                    'Item 2'
+                ], // $listData
+                -1, // $showLimit
+                'some-class', // $listClass
+                'ul', // $showLimit
+            ],
+            [
+                [
+                    'Item 1',
+                    'Item 2',
+                    'Item 3',
+                ], // $listData
+                5, // $showLimit
+                'some-class', // $listClass
+                'bad', // $showLimit
+            ],
+            [
+                [
+                    'Item 1',
+                    'Item 2',
+                    'Item 3',
+                    'Item 4',
+                ], // $listData
+                2, // $showLimit
+                'list-class', // $listClass
+                'ol', // $showLimit
+            ],
+        ];
+        $expected = [
+            '',
+            '',
+            '<ul class="list-collapsible-compact some-class"><li>Item 1</li><li>Item 2</li><li>Item 3</li></ul>',
+            [
+                'assertRegExp' => '/<ol class\="list\-collapsible\-compact list\-class"><li>Item 1<\/li><li>Item 2<\/li><\/ol><ol class\="list\-collapsible\-compact collapse list\-class" id\="collapsible\-list\-[0-9a-f]+"><li>Item 3<\/li><li>Item 4<\/li><\/ol><button class\="btn btn\-default btn\-xs top\-buffer hide\-popup" title\="' . __d('view_extension', 'Show or hide full list') . '" data\-toggle\="collapse" data\-target\="#collapsible\-list\-[0-9a-f]+" aria\-expanded\="false" data\-toggle\-icons\="fa\-angle\-double\-down,fa\-angle\-double\-up" type\="button"><span class\="fas fa\-angle\-double\-down fa\-fw fa\-lg"><\/span><\/button>/',
+            ],
+        ];
+        $this->runClassMethodGroup('collapsibleList', $params, $expected);
+    }
+
+    /**
      * Prepare options for Paginator Helper
      *
      * @param array $params Array of parameters for request
