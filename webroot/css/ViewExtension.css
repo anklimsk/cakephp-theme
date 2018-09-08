@@ -299,3 +299,9 @@ dl.dl-wt-bottom-margin {
 .display-block {
     display: block !important;
 }
+
+/* Collapsible list */
+ul.list-collapsible-compact, ol.list-collapsible-compact {
+    margin-top: 0;
+    margin-bottom: 0;
+}
