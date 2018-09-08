@@ -1444,7 +1444,7 @@
                 }
             }
 
-            objModalContent.find('form').attr('data-toggle', 'ajax-form');
+            objModalContent.find('form:not([skip-modal])').attr('data-toggle', 'ajax-form');
             var result = $('<div />').append(objModalContent).html();
             return result;
         }
