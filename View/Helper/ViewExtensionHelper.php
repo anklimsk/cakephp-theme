@@ -2126,4 +2126,66 @@ class ViewExtensionHelper extends CakeThemeAppHelper
 
         return $this->Html->div('page-header well', $this->Html->tag('h2', $pageHeader, ['class' => 'header']));
     }
+
+    /**
+     * Return collapsible list.
+     *
+     * @param array $listData List data
+     * @param int $showLimit Limit of the displayed list
+     * @param string $listClass Class of the list tag
+     * @param string $listTag Type of list tag to use (ol/ul)
+     * @return string Return collapsible list.
+     */
+    public function collapsibleList($listData = [], $showLimit = 10, $listClass = 'list-unstyled', $listTag = 'ul')
+    {
+        $result = '';
+        if (empty($listData)) {
+            return $result;
+        }
+
+        $showLimit = (int)$showLimit;
+        if ($showLimit < 1) {
+            return $result;
+        }
+
+        if (!empty($listClass)) {
+            $listClass = ' ' . $listClass;
+        }
+
+        $tagsAllowed = ['ul', 'ol'];
+        if (!in_array($listTag, $tagsAllowed)) {
+            $listTag = 'ul';
+        }
+
+        $listDataShown = array_slice($listData, 0, $showLimit);
+        $result = $this->Html->nestedList($listDataShown, ['class' => 'list-collapsible-compact' . $listClass], [], $listTag);
+        if (count($listData) <= $showLimit) {
+            return $result;
+        }
+
+        $listId = uniqid('collapsible-list-');
+        $listDataHidden = array_slice($listData, $showLimit);
+        $result .= $this->Html->nestedList(
+            $listDataHidden,
+            [
+                'class' => 'list-collapsible-compact collapse' . $listClass,
+                'id' => $listId
+            ],
+            [],
+            $listTag
+        ) .
+        $this->button(
+            'fas fa-angle-double-down',
+            'btn-default',
+            [
+                'class' => 'top-buffer hide-popup',
+                'title' => __d('view_extension', 'Show or hide full list'),
+                'data-toggle' => 'collapse', 'data-target' => '#' . $listId,
+                'aria-expanded' => 'false',
+                'data-toggle-icons' => 'fa-angle-double-down,fa-angle-double-up'
+            ]
+        );
+
+        return $result;
+    }
 }
