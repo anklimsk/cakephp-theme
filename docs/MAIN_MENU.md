@@ -17,7 +17,7 @@
 public function beforeFilter()
 {
     // If `false`, show the `Logout` menu item in the main menu in the navigation bar
-    (require plugin `cake-ldap-sync`)
+    (require plugin `anklimsk/cakephp-ldap-sync`)
     $isExternalAuth = false;
 
     // E-mail address and subject of letter for communication with the administrator
