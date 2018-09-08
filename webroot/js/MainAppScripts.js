@@ -1425,7 +1425,7 @@
          * @function _prepareModalContent
          * @memberof MainAppScripts
          *
-         * @returns {string} Prepared contenet1615
+         * @returns {string} Prepared contenet
          */
         function _prepareModalContent(content, modalWindow)
         {
