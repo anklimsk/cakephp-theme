@@ -189,3 +189,15 @@ Where:
 - `$controllerName` -  Name of controller for viewing
 - `$actionName` - Name of controller action for viewing
 - `$length` - Length of list item label string
+
+## Creating collapsible list
+
+Example:
+```php
+echo $this->ViewExtension->collapsibleList($listData, $showLimit, $listClass, $listTag);
+```
+Where:
+- `$listData` - List data
+- `$showLimit` - Limit of the displayed list
+- `$listClass` -  Class of the list tag
+- `$listTag` - Type of list tag to use (ol/ul)
