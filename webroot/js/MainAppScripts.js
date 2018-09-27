@@ -2951,10 +2951,6 @@
                     }
 
                     placeholder = targetItem.data('placeholder');
-                    if (placeholder) {
-                        targetItem.removeAttr('data-placeholder');
-                    }
-
                     targetItem.selectpicker('destroy').selectpicker(
                         {
                             title: placeholder,
