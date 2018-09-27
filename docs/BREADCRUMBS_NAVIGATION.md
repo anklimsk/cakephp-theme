@@ -105,4 +105,4 @@
       ```
 
       Where:
-      - `$breadCrumbs` - array of information for creating a breadcrumbs.
+      * `$breadCrumbs` - array of information for creating a breadcrumbs.

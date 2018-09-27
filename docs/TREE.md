@@ -175,12 +175,12 @@ Require plugin `Tools`. Use the composer to install:
       ```
 
       Where:
-      - `$url` - URL to move action in controller, e.g.: 
+      * `$url` - URL to move action in controller, e.g.: 
         ['controller' => 'employees', 'action' => 'move', $employee['Employee']['id']]
-      - `$useDrag` - flag of using drag and drop button
-      - `$glue` - glue for buttons, e.g.: `&nbsp;`
-      - `$useGroup` - If `True` and empty $glue, use group buttons.
-      - Wrap table in `DIV` element:
+      * `$useDrag` - flag of using drag and drop button
+      * `$glue` - glue for buttons, e.g.: `&nbsp;`
+      * `$useGroup` - If `True` and empty $glue, use group buttons.
+      * Wrap table in `DIV` element:
 
          ```php
          <?php

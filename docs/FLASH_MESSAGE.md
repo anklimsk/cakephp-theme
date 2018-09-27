@@ -16,6 +16,7 @@
    ```php
    $this->Flash->information($message, ['params' => ['hideMsgIcon' => true]]);
    ```
+
    Type of messages:
    - notification;
    - information;

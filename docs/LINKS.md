@@ -47,10 +47,10 @@
    ```
 
    Where:
-      - `$title` - The content to be wrapped by `<a>` tags.
-      - `$url` - Cake-relative URL or array of URL parameters, or external URL (starts with http://)
-      - `$options` - HTML options for link element
-        See https://book.cakephp.org/2.0/en/core-libraries/helpers/html.html#HtmlHelper::link
+   * `$title` - The content to be wrapped by `<a>` tags.
+   * `$url` - Cake-relative URL or array of URL parameters, or external URL (starts with http://)
+   * `$options` - HTML options for link element
+     See https://book.cakephp.org/2.0/en/core-libraries/helpers/html.html#HtmlHelper::link
 
 - Generates a sorting link for pagination with `PJAX` request ()
    See https://book.cakephp.org/2.0/en/core-libraries/helpers/paginator.html#PaginatorHelper::sort
@@ -66,15 +66,15 @@
    ```
 
    Where:
-      - `$icon` - Class of icon
-      - `$btn` - Class of button
-      - `$url` - Cake-relative URL or array of URL parameters, or external URL (starts with http://)
-      - `$options` - HTML options for button element
-        List of values option `action-type`:
-         * `confirm`: create link with confirmation action;
-         * `confirm-post`: create link with confirmation action and `POST` request;
-         * `post`: create link with `POST` request;
-         * `modal`: create link with opening result in modal window.
+   * `$icon` - Class of icon
+   * `$btn` - Class of button
+   * `$url` - Cake-relative URL or array of URL parameters, or external URL (starts with http://)
+   * `$options` - HTML options for button element
+     List of values option `action-type`:
+      + `confirm`: create link with confirmation action;
+      + `confirm-post`: create link with confirmation action and `POST` request;
+      + `post`: create link with `POST` request;
+      + `modal`: create link with opening result in modal window.
 
 ## Creating `Modal` and `Popup` window
 

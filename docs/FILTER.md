@@ -37,17 +37,17 @@
    ```
 
 4. If used postLink inside filter table:
-- Add option `['block' => 'confirm-form']` in postLink:
+   - Add option `['block' => 'confirm-form']` in postLink:
 
-   ```php
-   $this->Form->postLink(.., .., [..., 'block' => 'confirm-form']);
-   ```
+      ```php
+      $this->Form->postLink(.., .., [..., 'block' => 'confirm-form']);
+      ```
 
-- Add after `echo $this->Filter->closeFilterForm();`
+   - Add after `echo $this->Filter->closeFilterForm();`
 
-   ```php
-   echo $this->Html->div('confirm-form-block', $this->fetch('confirm-form'));
-   ```
+      ```php
+      echo $this->Html->div('confirm-form-block', $this->fetch('confirm-form'));
+      ```
 
 ## Using group action
 

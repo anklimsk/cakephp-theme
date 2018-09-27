@@ -20,19 +20,20 @@
    ```
 
    Where:
-      - `$inputList` - array of inputs in format: key - model.field, value - form input options;
-      - `$inputStatic` - array of static text in format: key - model.field or specific field name, 
-        value - array of options: `label` - text of label, `value` - data for rendering (if not set or
-        if empty missing data by field name in request data array).
-      - `$tabsList` - array config of tabs in format: key - tab label, value - array of inputs fields;
-      - `$modelName` - string of model name for which the form is being defined;
-      - `$legend` - string of legend in form;
-      - `$options` An array of html attributes and options of `Form` element.
+   - `$inputList` - array of inputs in format: key - model.field, value - form input options;
+   - `$inputStatic` - array of static text in format: key - model.field or specific field name, 
+     value - array of options: `label` - text of label, `value` - data for rendering (if not set or
+     if empty missing data by field name in request data array).
+   - `$tabsList` - array config of tabs in format: key - tab label, value - array of inputs fields;
+   - `$modelName` - string of model name for which the form is being defined;
+   - `$legend` - string of legend in form;
+   - `$options` An array of html attributes and options of `Form` element.
 
 ## Creating forms for AJAX upload files
 
 1. In your `Controller`:
    - Load `Upload` component:
+
       ```php
       /**
        * Array containing the names of components this controller uses. Component names
@@ -128,13 +129,13 @@
    ```
 
    Where:
-      - `$url` - URL for upload;
-      - `$maxfilesize` - Maximum file size for upload, bytes.
-      - `$acceptfiletypes` -  PCRE for checking uploaded file, e.g.: `(\.|\/)(jpe?g)$`.
-      - `$redirecturl` - URL for redirect on successful upload.
-      - `$btnTitle` - Title of upload button.
-      - `$btnClass` - Class of upload button.
-        See https://blueimp.github.io/jQuery-File-Upload
+   - `$url` - URL for upload;
+   - `$maxfilesize` - Maximum file size for upload, bytes.
+   - `$acceptfiletypes` -  PCRE for checking uploaded file, e.g.: `(\.|\/)(jpe?g)$`.
+   - `$redirecturl` - URL for redirect on successful upload.
+   - `$btnTitle` - Title of upload button.
+   - `$btnClass` - Class of upload button.
+     See https://blueimp.github.io/jQuery-File-Upload
 
 ## Render validation error for hidden fields in form
 
@@ -233,6 +234,7 @@ Example of date and time picker
 ```php
 echo $this->Form->spin($fieldName, $options);
 ```
+
 Where:
 - `$fieldName` Name of a field, like this "Modelname.fieldname"
 - `$options` Array of HTML attributes and widget options:
@@ -302,43 +304,43 @@ Where:
 
 2. In your `Model` file add method `getListByQuery`:
 
-```php
-/**
- * Return list for select input
- *
- * @param string $query Query string
- *  from result
- * @return array Return list for select input
- */
-public function getListByQuery($query = null) {
-    $result = [];
-    $query = trim($query);
-    if (empty($query)) {
-        return $result;
-    }
+   ```php
+   /**
+    * Return list for select input
+    *
+    * @param string $query Query string
+    *  from result
+    * @return array Return list for select input
+    */
+   public function getListByQuery($query = null) {
+       $result = [];
+       $query = trim($query);
+       if (empty($query)) {
+           return $result;
+       }
 
-    $conditions = ['LOWER(' . $this->alias . '.some_field) like'] = mb_strtolower($query . '%');
-    $recursive = -1;
-    $result = $this->find('list', compact('conditions', 'recursive'))
+       $conditions = ['LOWER(' . $this->alias . '.some_field) like'] = mb_strtolower($query . '%');
+       $recursive = -1;
+       $result = $this->find('list', compact('conditions', 'recursive'))
 
-    return $result;
-}
-```
+       return $result;
+   }
+   ```
 
 3. In your `View` file add:
 
-```php
-echo $this->Form->select(
-    'SomeModel.field',
-    [
-        'options' => $managers,
-        'empty' => __('Select data'),
-        'data-abs-ajax-url' => $this->Html->url(['controller' => 'ctrl', 'action' => 'list', 'ext' => 'json']),
-        'data-abs-ajax-data' => json_encode(['q' => '{{{q}}}']),
-        'data-abs-min-length' => 2,
-    ]
-);
-```
+   ```php
+   echo $this->Form->select(
+       'SomeModel.field',
+       [
+           'options' => $managers,
+           'empty' => __('Select data'),
+           'data-abs-ajax-url' => $this->Html->url(['controller' => 'ctrl', 'action' => 'list', 'ext' => 'json']),
+           'data-abs-ajax-data' => json_encode(['q' => '{{{q}}}']),
+           'data-abs-min-length' => 2,
+       ]
+   );
+   ```
 
 ### Flagstrap input
 

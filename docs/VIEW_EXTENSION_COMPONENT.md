@@ -10,7 +10,6 @@ if ($this->ViewExtension->isHtml()) {
 }
 ```
 
-
 ## Using back redirect to previous page
 
 In your `Controller` action add:
@@ -42,70 +41,70 @@ Require plugin `Queue`. Use the composer to install:
 
 - In your `Task` load `Model` `ExtendQueuedTask`, e.g.:
 
-```php
-public $uses = [
-    'Queue.QueuedTask',
-    'CakeTheme.ExtendQueuedTask',
-];
-```
+   ```php
+   public $uses = [
+       'Queue.QueuedTask',
+       'CakeTheme.ExtendQueuedTask',
+   ];
+   ```
 
 - Use progress of task:
 
-```php
-$step = 0;
-$maxStep = 5;
-$this->ExtendQueuedTask->updateTaskProgress($id, $step, $maxStep);
-```
+   ```php
+   $step = 0;
+   $maxStep = 5;
+   $this->ExtendQueuedTask->updateTaskProgress($id, $step, $maxStep);
+   ```
 
-Where:
-- `$id` - ID of job
-- `$step` - Current step of job
-- `$maxStep` - Maximum steps of job
+   Where:
+   * `$id` - ID of job
+   * `$step` - Current step of job
+   * `$maxStep` - Maximum steps of job
 
 - Add a message with the result of the task
 
-```php
-$this->ExtendQueuedTask->updateMessage($id, $message);
-// or
-$this->ExtendQueuedTask->updateTaskErrorMessage($id, $message, $keepExistingMessage);
-```
+   ```php
+   $this->ExtendQueuedTask->updateMessage($id, $message);
+   // or
+   $this->ExtendQueuedTask->updateTaskErrorMessage($id, $message, $keepExistingMessage);
+   ```
 
-Where:
-- `$id` - ID of job
-- `$message` - Message for update
-- `$keepExistingMessage` - If `True`, keep existing error message
+   Where:
+   * `$id` - ID of job
+   * `$message` - Message for update
+   * `$keepExistingMessage` - If `True`, keep existing error message
 
 - In your `Controller` action add:
 
-```php
-$this->loadModel('CakeTheme.ExtendQueuedTask');
-$taskName = 'SomeTask';
-$taskParam = ['param' => 'value'];
-$notBefore = null;
-$group = 'some_group';
-$this->ExtendQueuedTask->createJob($taskName, $taskParam, $notBefore, $group);
-$this->ViewExtension->setProgressSseTask($taskName);
-```
+   ```php
+   $this->loadModel('CakeTheme.ExtendQueuedTask');
+   $taskName = 'SomeTask';
+   $taskParam = ['param' => 'value'];
+   $notBefore = null;
+   $group = 'some_group';
+   $this->ExtendQueuedTask->createJob($taskName, $taskParam, $notBefore, $group);
+   $this->ViewExtension->setProgressSseTask($taskName);
+   ```
 
-Where:
-- `$taskName` - Name of task
-- `$taskParam` - Optional parameters for the task
-- `$notBefore` - Optional date which must not be preceded
-- `$group` - Used to group similar QueuedTasks
+   Where:
+   * `$taskName` - Name of task
+   * `$taskParam` - Optional parameters for the task
+   * `$notBefore` - Optional date which must not be preceded
+   * `$group` - Used to group similar QueuedTasks
 
 - In your `View` file add:
 
-```php
-echo $this->ViewExtension->requestOnlyLink($title, $url, $options);
-// or
-echo $this->Html->link($title, $url, ['data-toggle' => 'request-only']);
-```
+   ```php
+   echo $this->ViewExtension->requestOnlyLink($title, $url, $options);
+   // or
+   echo $this->Html->link($title, $url, ['data-toggle' => 'request-only']);
+   ```
 
-Where:
-- `$title` - The content to be wrapped by `<a>` tags.
-- `$url` - Cake-relative URL or array of URL parameters, or external URL (starts with http://)
-- `$options` - HTML options for link element
-See https://book.cakephp.org/2.0/en/core-libraries/helpers/html.html#HtmlHelper::link
+   Where:
+   * `$title` - The content to be wrapped by `<a>` tags.
+   * `$url` - Cake-relative URL or array of URL parameters, or external URL (starts with http://)
+   * `$options` - HTML options for link element
+     See https://book.cakephp.org/2.0/en/core-libraries/helpers/html.html#HtmlHelper::link
 
 ## Set Flash message of exception
 
