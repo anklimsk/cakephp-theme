@@ -1671,7 +1671,7 @@
             var method          = el.data('modal-method');
             var disableUseStack = false;
             if ((el.attr('data-toggle') === 'modal')
-                || el.attr('link-use-modal')
+                || (el.attr('data-toggle') === 'modal-popover')
             ) {
                 disableUseStack = el.data('disable-use-stack');
             } else {
@@ -3081,7 +3081,7 @@
 
         /**
          * This function used for bind Twitter Bootstrap Popovers.
-         * Selector: `[data-toggle="popover"]`.
+         * Selector: `[data-toggle="popover"],[data-toggle="modal-popover"]`.
          * Attributes:
          *  `data-popover-url` - URL for loading content;
          *  `data-popover-placement` - position of popover;
@@ -3099,7 +3099,7 @@
                 return false;
             }
 
-            $('[data-toggle="popover"]').popover(
+            $('[data-toggle="popover"],[data-toggle="modal-popover"]').popover(
                 {
                     content: _getPopoverContent,
                     delay: {
@@ -3125,13 +3125,12 @@
 
         /**
          * This function used for bind Twitter Bootstrap Modals.
-         * Selector: `a[data-toggle="modal"], a[link-use-modal], [data-toggle="modal"] a`.
+         * Selector: `a[data-toggle="modal"], a[data-toggle="modal-popover"], [data-toggle="modal"] a`.
          * Attributes:
          *  `data-modal-title` - title of modal window;
          *  `data-modal-size` - `sm`|`lg` - size of modal window;
          *  `data-modal-method` - `get`|`post` - method for request: GET or POST;
-         *  `data-disable-use-stack` - disabling use stack of madal window;
-         *  `link-use-modal` - open link in modal window.
+         *  `data-disable-use-stack` - disabling use stack of madal window.
          *
          * @function updateModalLinks
          * @memberof MainAppScripts
@@ -3145,7 +3144,7 @@
                 return false;
             }
 
-            $('a[data-toggle="modal"], a[link-use-modal], [data-toggle="modal"] a').off('click.MainAppScripts.modal').on('click.MainAppScripts.modal', _showModalWindowClick);
+            $('a[data-toggle="modal"], a[data-toggle="modal-popover"], [data-toggle="modal"] a').off('click.MainAppScripts.modal').on('click.MainAppScripts.modal', _showModalWindowClick);
 
             return true;
         };

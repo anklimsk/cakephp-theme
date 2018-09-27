@@ -245,10 +245,10 @@ class ViewExtensionHelperTest extends AppCakeTestCase
             ],
         ];
         $expected = [
-            '<a href="/" link-use-modal="1" data-modal-title="' . __d('view_extension', 'Detail information') . '" class="popup-link text-nowrap" target="_blank" data-toggle="popover" data-popover-placement="auto top">Test title</a>',
-            '<a href="/test/act" link-use-modal="1" data-modal-title="' . __d('view_extension', 'Detail information') . '" class="popup-link text-nowrap" target="_blank" data-toggle="popover" data-popover-placement="auto top">Test title</a>',
-            '<a href="/test/act" link-use-modal="1" data-modal-title="' . __d('view_extension', 'Detail information') . '" class="popup-link text-nowrap" target="_blank" data-toggle="popover" data-popover-placement="auto top">Test title</a>',
-            '<a href="/some_controller/some_action" data-modal-title="Modal title" link-use-modal="1" class="popup-link text-nowrap" target="_blank" data-toggle="popover" data-popover-placement="auto top">Some title</a>'
+            '<a href="/" data-toggle="modal-popover" class="popup-link text-nowrap" target="_blank" data-popover-placement="auto top" data-modal-title="' . __d('view_extension', 'Detail information') . '">Test title</a>',
+            '<a href="/test/act" data-toggle="modal-popover" class="popup-link text-nowrap" target="_blank" data-popover-placement="auto top" data-modal-title="' . __d('view_extension', 'Detail information') . '">Test title</a>',
+            '<a href="/test/act" data-toggle="modal-popover" class="popup-link text-nowrap" target="_blank" data-popover-placement="auto top" data-modal-title="' . __d('view_extension', 'Detail information') . '">Test title</a>',
+            '<a href="/some_controller/some_action" data-modal-title="Modal title" data-toggle="modal-popover" class="popup-link text-nowrap" target="_blank" data-popover-placement="auto top">Some title</a>'
         ];
         $this->runClassMethodGroup('popupModalLink', $params, $expected);
     }
@@ -286,10 +286,10 @@ class ViewExtensionHelperTest extends AppCakeTestCase
             ],
         ];
         $expected = [
-            '<a href="/" class="popup-link text-nowrap" target="_blank" data-toggle="popover" data-popover-placement="auto top">Test title</a>',
-            '<a href="/test/act" class="popup-link text-nowrap" target="_blank" data-toggle="popover" data-popover-placement="auto top">Test title</a>',
-            '<a href="/test/act" class="popup-link text-nowrap" target="_blank" data-toggle="popover" data-popover-placement="auto top">Test title</a>',
-            '<a href="/some_controller/some_action" data-popover-placement="auto bottom" class="popup-link text-nowrap" target="_blank" data-toggle="popover">Some title</a>'
+            '<a href="/" data-toggle="popover" class="popup-link text-nowrap" target="_blank" data-popover-placement="auto top">Test title</a>',
+            '<a href="/test/act" data-toggle="popover" class="popup-link text-nowrap" target="_blank" data-popover-placement="auto top">Test title</a>',
+            '<a href="/test/act" data-toggle="popover" class="popup-link text-nowrap" target="_blank" data-popover-placement="auto top">Test title</a>',
+            '<a href="/some_controller/some_action" data-popover-placement="auto bottom" data-toggle="popover" class="popup-link text-nowrap" target="_blank">Some title</a>'
         ];
         $this->runClassMethodGroup('popupLink', $params, $expected);
     }
@@ -1595,7 +1595,7 @@ class ViewExtensionHelperTest extends AppCakeTestCase
         $expected = [
             '<dl class="dl-horizontal"><dt>Some label:</dt><dd>' . __d('view_extension', '&lt;None&gt;') . '</dd></dl>',
             [
-                'assertRegExp' => '/<dl class="dl-horizontal"><dt>Some Controller:<\/dt><dd><ol><li><a href="\/admin\/some_controller\/some_action\/1" link-use-modal="1" data-modal-title="Detail information" class="popup-link text-nowrap" target="_blank" data-toggle="popover" data-popover-placement="auto top">Some record<\/a> \(<time data-toggle="timeago" datetime="2017-03-06T12:10:27\+00:00" class="help">.+<\/time>\)<\/li><li><a href="\/admin\/some_controller\/some_action\/2" link-use-modal="1" data-modal-title="Detail information" class="popup-link text-nowrap" target="_blank" data-toggle="popover" data-popover-placement="auto top"><div class="collapse-text-expanded"><div class="collapse-text-truncated">Some long record<a href="#" role="button" data-toggle="collapse-text-expand" class="collapse-text-action-btn" title="Expand text"><span class="fas fa-angle-double-right fa-lg"><\/span><\/a><\/div><div class="collapse-text-original">Some long record name for test<a href="#" role="button" data-toggle="collapse-text-roll-up" class="collapse-text-action-btn" title="Roll up text"><span class="fas fa-angle-double-left fa-lg"><\/span><\/a><\/div><\/div><\/a> \(<time data-toggle="timeago" datetime="2017-03-06T12:14:42\+00:00" class="help">.+<\/time>\)<\/li><\/ol><\/dd><\/dl>/'
+                'assertRegExp' => '/<dl class="dl-horizontal"><dt>Some Controller:<\/dt><dd><ol><li><a href="\/admin\/some_controller\/some_action\/1" data-toggle="modal-popover" class="popup-link text-nowrap" target="_blank" data-popover-placement="auto top" data-modal-title="Detail information">Some record<\/a> \(<time data-toggle="timeago" datetime="2017-03-06T12:10:27\+00:00" class="help">.+<\/time>\)<\/li><li><a href="\/admin\/some_controller\/some_action\/2" data-toggle="modal-popover" class="popup-link text-nowrap" target="_blank" data-popover-placement="auto top" data-modal-title="Detail information"><div class="collapse-text-expanded"><div class="collapse-text-truncated">Some long record<a href="#" role="button" data-toggle="collapse-text-expand" class="collapse-text-action-btn" title="Expand text"><span class="fas fa-angle-double-right fa-lg"><\/span><\/a><\/div><div class="collapse-text-original">Some long record name for test<a href="#" role="button" data-toggle="collapse-text-roll-up" class="collapse-text-action-btn" title="Roll up text"><span class="fas fa-angle-double-left fa-lg"><\/span><\/a><\/div><\/div><\/a> \(<time data-toggle="timeago" datetime="2017-03-06T12:14:42\+00:00" class="help">.+<\/time>\)<\/li><\/ol><\/dd><\/dl>/'
             ]
         ];
         $this->runClassMethodGroup('listLastInfo', $params, $expected);

@@ -116,14 +116,16 @@ class ViewExtensionHelper extends CakeThemeAppHelper
         ];
         $result['showEmpty'] = __d('view_extension', '&lt;None&gt;');
         $result['popupModalLink'] = [
-            'link-use-modal' => true,
+            'escape' => false,
+            'class' => 'popup-link text-nowrap',
+            'target' => '_blank',
+            'data-popover-placement' => 'auto top',
             'data-modal-title' => __d('view_extension', 'Detail information'),
         ];
         $result['popupLink'] = [
             'escape' => false,
             'class' => 'popup-link text-nowrap',
             'target' => '_blank',
-            'data-toggle' => 'popover',
             'data-popover-placement' => 'auto top',
         ];
         $result['modalLink'] = [
@@ -620,15 +622,9 @@ class ViewExtensionHelper extends CakeThemeAppHelper
      */
     public function popupModalLink($title = null, $url = null, $options = [])
     {
-        if (empty($options)) {
-            $options = [];
-        } elseif (!is_array($options)) {
-            $options = [$options];
-        }
-
         $optionsDefault = $this->_getOptionsForElem('popupModalLink');
 
-        return $this->popupLink($title, $url, $options + $optionsDefault);
+        return $this->_createLink('modal-popover', $title, $url, $options, $optionsDefault);
     }
 
     /**
@@ -644,7 +640,7 @@ class ViewExtensionHelper extends CakeThemeAppHelper
     {
         $optionsDefault = $this->_getOptionsForElem('popupLink');
 
-        return $this->_createLink(null, $title, $url, $options, $optionsDefault);
+        return $this->_createLink('popover', $title, $url, $options, $optionsDefault);
     }
 
     /**
