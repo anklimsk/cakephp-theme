@@ -2789,12 +2789,25 @@
             }
 
             target.tab();
+            target.off('show.bs.tab').on(
+                'show.bs.tab',
+                function (e) {
+                    var href = $(e.target).attr('href');
+                    if (href) {
+                        $('html').data('active-tab', href);
+                    }
+                }
+            );
             target.off('shown.bs.tab').on(
                 'shown.bs.tab',
                 function (e) {
                     MainAppScripts.setInputFocus();
                 }
             );
+            var activeTab = $('html').data('active-tab');
+            if (activeTab) {
+                $('a[data-toggle="tab"][href="' + activeTab + '"]').tab('show');
+            }
 
             return true;
         };
