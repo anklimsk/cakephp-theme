@@ -3,26 +3,30 @@
 ## Install this plugin
 
 1. Include components in your `AppController`:
-```php
-public $components = [
-    'CakeTheme.Theme'
-    'CakeTheme.ViewExtension',
-    ...
-];
-```
+
+   ```php
+   public $components = [
+       'CakeTheme.Theme'
+       'CakeTheme.ViewExtension',
+       ...
+   ];
+   ```
+
 2. Include helpers in your `AppController`:
-```php
-public $helpers = [
-    'AssetCompress.AssetCompress',
-    'CakeTheme.ActionScript',
-    'CakeTheme.ViewExtension',
-    'CakeTheme.Filter',
-    'Form' => [
-        'className' => 'CakeTheme.ExtBs3Form'
-    ],
-    ...
-];
-```
+
+   ```php
+   public $helpers = [
+       'AssetCompress.AssetCompress',
+       'CakeTheme.ActionScript',
+       'CakeTheme.ViewExtension',
+       'CakeTheme.Filter',
+       'Form' => [
+           'className' => 'CakeTheme.ExtBs3Form'
+       ],
+       ...
+   ];
+   ```
+
 3. Copy translation files from `app/Plugin/CakeTheme/Locale/rus/LC_MESSAGES/` to
 `app/Locale/rus/LC_MESSAGES`:
 - `tour_app.*`;
@@ -46,6 +50,7 @@ public $helpers = [
 - [Creating a breadcrumbs navigation](BREADCRUMBS_NAVIGATION.md)
 
 ## Example of configuration file
+
 ```php
 $config['CakeTheme'] = [
     'AdditionalFiles' => [
