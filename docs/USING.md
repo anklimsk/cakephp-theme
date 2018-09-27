@@ -43,6 +43,7 @@ public $helpers = [
 - [Creation main menu](MAIN_MENU.md)
 - [Updating libraries](UPDATING_LIBRARIES.md)
 - [Creating a collapsible tree and table with support for moving and drag and drop](TREE.md)
+- [Creating a breadcrumbs navigation](BREADCRUMBS_NAVIGATION.md)
 
 ## Example of configuration file
 ```php

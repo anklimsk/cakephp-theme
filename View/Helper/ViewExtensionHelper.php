@@ -2188,4 +2188,38 @@ class ViewExtensionHelper extends CakeThemeAppHelper
 
         return $result;
     }
+
+    /**
+     * Adds a links to the breadcrumbs array.
+     *
+     * @param array $breadCrumbs List of breadcrumbs in format:
+     *  - first element in list item: text for link;
+     *  - second element in list item: URL for link.
+     * @return void
+     */
+    public function addBreadCrumbs($breadCrumbs = null)
+    {
+        if (empty($breadCrumbs) || !is_array($breadCrumbs)) {
+            return;
+        }
+
+        foreach ($breadCrumbs as $breadCrumbInfo) {
+            if (empty($breadCrumbInfo)) {
+                continue;
+            }
+
+            $link = null;
+            if (is_array($breadCrumbInfo)) {
+                $name = array_shift($breadCrumbInfo);
+                $link = array_shift($breadCrumbInfo);
+            } else {
+                $name = $breadCrumbInfo;
+            }
+            if (empty($name)) {
+                continue;
+            }
+
+            $this->Html->addCrumb(h($name), $link);
+        }
+    }
 }

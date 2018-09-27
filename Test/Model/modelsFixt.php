@@ -143,3 +143,49 @@ class TreeDataTest extends CakeTestModel
         $this->callbackActions['afterUpdateTree'] = null;
     }
 }
+
+/**
+ * BreadCrumbTest class
+ *
+ * @package       Cake.Test.Case.Model
+ */
+class BreadCrumbTest extends CakeTestModel
+{
+
+    /**
+     * Name of the model.
+     *
+     * @var string
+     */
+    public $name = 'BreadCrumbTest';
+
+    /**
+     * Custom database table name, or null/false if no table association is desired.
+     *
+     * @var string
+     */
+    public $useTable = 'employees';
+
+    /**
+     * Custom display field name. Display fields are used by Scaffold, in SELECT boxes' OPTION elements.
+     *
+     * This field is also used in `find('list')` when called with no extra parameters in the fields list
+     *
+     * @var string
+     */
+    public $displayField = 'full_name';
+
+    /**
+     * List of behaviors to load when the model object is initialized. Settings can be
+     * passed to behaviors by using the behavior name as index. Eg:
+     *
+     * public $actsAs = array('Translate', 'MyBehavior' => array('setting1' => 'value1'))
+     *
+     * @var array
+     * @link http://book.cakephp.org/2.0/en/models/behaviors.html#using-behaviors
+     */
+    public $actsAs = [
+        'CakeTheme.BreadCrumb'
+    ];
+
+}

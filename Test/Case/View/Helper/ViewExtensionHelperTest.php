@@ -2299,6 +2299,57 @@ class ViewExtensionHelperTest extends AppCakeTestCase
     }
 
     /**
+     * testAddBreadCrumbsInvalidParam method
+     *
+     * @return void
+     */
+    public function testAddBreadCrumbsInvalidParam()
+    {
+        $breadCrumbs = 'bad';
+        $this->_targetObject->addBreadCrumbs($breadCrumbs);
+        $result = $this->_targetObject->Html->getCrumbs();
+        $this->assertNull($result);
+    }
+
+    /**
+     * testAddBreadCrumbsEmptyParam method
+     *
+     * @return void
+     */
+    public function testAddBreadCrumbsEmptyParam()
+    {
+        $breadCrumbs = [];
+        $this->_targetObject->addBreadCrumbs($breadCrumbs);
+        $result = $this->_targetObject->Html->getCrumbs();
+        $this->assertNull($result);
+    }
+
+    /**
+     * testAddBreadCrumbsValidParam method
+     *
+     * @return void
+     */
+    public function testAddBreadCrumbsValidParam()
+    {
+        $breadCrumbs = [
+            [
+                'root'
+            ],
+            [
+                'Some name',
+                [
+                    'controller' => 'some_controller',
+                    'action' => 'act'
+                ]
+            ],
+        ];
+        $this->_targetObject->addBreadCrumbs($breadCrumbs);
+        $result = $this->_targetObject->Html->getCrumbs();
+        $expected = 'root&raquo;<a href="/some_controller/act">Some name</a>';
+        $this->assertData($expected, $result);
+    }
+
+    /**
      * Prepare options for Paginator Helper
      *
      * @param array $params Array of parameters for request
