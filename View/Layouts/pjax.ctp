@@ -28,15 +28,18 @@ if (!isset($showBreadcrumb)) {
 <?php
     echo $this->element('barNav', compact('isExternalAuth', 'emailContact', 'emailSubject'));
 if ($showBreadcrumb) {
-    echo $this->Html->div('breadcrumb hidden-print', $this->Html->getCrumbs(
-        '&nbsp;' .
-        $this->Html->tag('span', '', ['class' => 'fas fa-angle-right']) . '&nbsp;',
-        [
-            'text' => $this->Html->tag('span', '', ['class' => 'fas fa-home']),
-            'url' => '/',
-            'escape' => false
-        ]
-    ));
+    echo $this->Html->div(
+        'breadcrumb hidden-print', $this->Html->getCrumbs(
+            '&nbsp;' .
+            $this->Html->tag('span', '', ['class' => 'fas fa-angle-right']) . '&nbsp;',
+            [
+                'text' => $this->Html->tag('span', '', ['class' => 'fas fa-home']),
+                'url' => '/',
+                'escape' => false
+            ]
+        ),
+        ['data-toggle' => 'pjax']
+    );
 }
 ?>
     </div>
