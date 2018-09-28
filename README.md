@@ -1,8 +1,8 @@
 # CakePHP 2.x Full UI theme plugin
 [![Build Status](https://travis-ci.com/anklimsk/cakephp-theme.svg?branch=master)](https://travis-ci.com/anklimsk/cakephp-theme)
 [![Coverage Status](https://codecov.io/gh/anklimsk/cakephp-theme/branch/master/graph/badge.svg)](https://codecov.io/gh/anklimsk/cakephp-theme)
-[![Latest Stable Version](https://poser.pugx.org/anklimsk/cakephp-theme/version)](https://packagist.org/packages/anklimsk/cakephp2-theme)
-[![License](https://poser.pugx.org/anklimsk/cakephp-theme/license)](https://packagist.org/packages/anklimsk/cakephp2-theme)
+[![Latest Stable Version](https://poser.pugx.org/anklimsk/cakephp2-theme/v/stable)](https://packagist.org/packages/anklimsk/cakephp2-theme)
+[![License](https://poser.pugx.org/anklimsk/cakephp2-theme/license)](https://packagist.org/packages/anklimsk/cakephp2-theme)
 
 Full UI theme for CakePHP
 
