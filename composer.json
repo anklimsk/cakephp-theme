@@ -12,9 +12,9 @@
     "require": {
         "php": ">=5.4",
         "composer/installers": "^1.5.0",
-        "anklimsk/cakephp-basic-functions": "*",
-        "anklimsk/cakephp-config-plugin": "*",
-        "anklimsk/cakephp-extended-test": "*",
+        "anklimsk/cakephp-basic-functions": "^0.4.2",
+        "anklimsk/cakephp-config-plugin": "^0.1.3",
+        "anklimsk/cakephp-extended-test": "^0.8.1",
         "codaxis/cakephp-bootstrap3-helpers": "^1.2",
         "markstory/asset_compress": "^0.25",
         "packagelist/yuicompressor-bin": "^v2.4.8"
