@@ -18,6 +18,10 @@ matrix:
         - CODECOVERAGE=1
     - php: 7.1
       env:
+        - PHPCS=1
+        - PHPCS_IGNORE=CakeBasicFunctions,CakeExtendTest,CakeConfigPlugin,AssetCompress,Bs3Helpers,Queue,Shim,Tools
+    - php: 7.1
+      env:
         - FOC_VALIDATE=1
 
 before_script:
