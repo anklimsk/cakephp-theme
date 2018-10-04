@@ -11,7 +11,7 @@ cache:
 env:
   global:
     - PLUGIN_NAME=CakeTheme
-    - REQUIRE="anklimsk/cakephp-console-installer dereuromark/cakephp-queue:^2.3.0 dereuromark/cakephp-tools:^0.12.3"
+    - REQUIRE="anklimsk/cakephp-console-installer dereuromark/cakephp-queue:^2.3.0 dereuromark/cakephp-tools:^0.12.4"
     - DB=mysql
     - CAKE_REF=2.x
 
