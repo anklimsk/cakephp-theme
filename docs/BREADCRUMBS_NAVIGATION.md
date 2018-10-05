@@ -60,14 +60,13 @@
       /**
        * Return full name of data.
        *
-       * @param Model $model Model using this behavior.
        * @param int|string|array $id ID of record or array data
        *  for retrieving full name.
        * @return string|bool Return full name of data,
        *  or False on failure.
        */
-      public function getFullName(Model $model, $id = null) {
-          $name = $this->getName($model, $id);
+      public function getFullName($id = null) {
+          $name = $this->getName($id);
           if (empty($name)) {
               return false;
           }
