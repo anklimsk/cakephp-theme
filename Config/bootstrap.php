@@ -46,6 +46,15 @@ if (!defined('CAKE_THEME_AUTOCOMPLETE_LIMIT')) {
 }
 
 /**
+ * Breadcrumbs text limit
+ *
+ * Used for set breadcrumbs text limit, if needed. Default value `20`
+ */
+if (!defined('CAKE_THEME_BREADCRUMBS_TEXT_LIMIT')) {
+	define('CAKE_THEME_BREADCRUMBS_TEXT_LIMIT', 30);
+}
+
+/**
  * Filter row limit
  *
  * Used for set limit for amount row of filter, if needed. Default value `8`

@@ -186,7 +186,7 @@ class BreadCrumbBehavior extends ModelBehavior {
 			$link += compact('plugin', 'controller', 'action');
 		}
 
-		$name = CakeText::truncate(h($name), 20);
+		$name = CakeText::truncate(h($name), CAKE_THEME_BREADCRUMBS_TEXT_LIMIT);
 		$result = [
 			$name,
 			$link

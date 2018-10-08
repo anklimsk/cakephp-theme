@@ -1,6 +1,7 @@
 <?php
 App::uses('AppCakeTestCase', 'CakeTheme.Test');
 App::uses('BreadCrumbBehavior', 'CakeTheme.Model/Behavior');
+App::uses('CakeText', 'Utility');
 require_once App::pluginPath('CakeTheme') . 'Test' . DS . 'Model' . DS . 'modelsFixt.php';
 
 /**
@@ -213,7 +214,7 @@ class BreadCrumbBehaviorTest extends AppCakeTestCase {
 	public function testCreateBreadcrumbEmptyParam() {
 		$result = $this->_targetObject->createBreadcrumb();
 		$expected = [
-			'Bread crumb tests',
+			CakeText::truncate('Bread crumb tests', CAKE_THEME_BREADCRUMBS_TEXT_LIMIT),
 			[
 				'plugin' => null,
 				'controller' => 'bread_crumb_tests',
@@ -242,7 +243,7 @@ class BreadCrumbBehaviorTest extends AppCakeTestCase {
 	public function testCreateBreadcrumbSuccessDisableLink() {
 		$result = $this->_targetObject->createBreadcrumb(3, false);
 		$expected = [
-			'Герасимова Н.М.',
+			CakeText::truncate('Герасимова Н.М.', CAKE_THEME_BREADCRUMBS_TEXT_LIMIT),
 			null
 		];
 		$this->assertData($expected, $result);
@@ -256,7 +257,7 @@ class BreadCrumbBehaviorTest extends AppCakeTestCase {
 	public function testCreateBreadcrumbSuccessDefaultLink() {
 		$result = $this->_targetObject->createBreadcrumb(4, null);
 		$expected = [
-			'Алексеев А. В.',
+			CakeText::truncate('Алексеев А. В.', CAKE_THEME_BREADCRUMBS_TEXT_LIMIT),
 			[
 				4,
 				'plugin' => null,
@@ -276,7 +277,7 @@ class BreadCrumbBehaviorTest extends AppCakeTestCase {
 		$link = ['controller' => 'some_controller', 'param'];
 		$result = $this->_targetObject->createBreadcrumb(5, $link);
 		$expected = [
-			'Ефимов У.Ю.',
+			CakeText::truncate('Ефимов У.Ю.', CAKE_THEME_BREADCRUMBS_TEXT_LIMIT),
 			[
 				'controller' => 'some_controller',
 				'param',
@@ -296,7 +297,7 @@ class BreadCrumbBehaviorTest extends AppCakeTestCase {
 		$result = $this->_targetObject->getBreadcrumbInfo();
 		$expected = [
 			[
-				'Bread crumb tests',
+				CakeText::truncate('Bread crumb tests', CAKE_THEME_BREADCRUMBS_TEXT_LIMIT),
 				[
 					'plugin' => null,
 					'controller' => 'bread_crumb_tests',
@@ -327,7 +328,7 @@ class BreadCrumbBehaviorTest extends AppCakeTestCase {
 		$result = $this->_targetObject->getBreadcrumbInfo(1, false);
 		$expected = [
 			[
-				'Сазонов А.П.',
+				CakeText::truncate('Сазонов А.П.', CAKE_THEME_BREADCRUMBS_TEXT_LIMIT),
 				[
 					1,
 					'plugin' => null,
@@ -348,7 +349,7 @@ class BreadCrumbBehaviorTest extends AppCakeTestCase {
 		$result = $this->_targetObject->getBreadcrumbInfo(2, null);
 		$expected = [
 			[
-				'Bread crumb tests',
+				CakeText::truncate('Bread crumb tests', CAKE_THEME_BREADCRUMBS_TEXT_LIMIT),
 				[
 					'plugin' => null,
 					'controller' => 'bread_crumb_tests',
@@ -356,7 +357,7 @@ class BreadCrumbBehaviorTest extends AppCakeTestCase {
 				]
 			],
 			[
-				'Костин Д.И.',
+				CakeText::truncate('Костин Д.И.', CAKE_THEME_BREADCRUMBS_TEXT_LIMIT),
 				[
 					2,
 					'plugin' => null,
@@ -377,7 +378,7 @@ class BreadCrumbBehaviorTest extends AppCakeTestCase {
 		$result = $this->_targetObject->getBreadcrumbInfo(3, true);
 		$expected = [
 			[
-				'Bread crumb tests',
+				CakeText::truncate('Bread crumb tests', CAKE_THEME_BREADCRUMBS_TEXT_LIMIT),
 				[
 					'plugin' => null,
 					'controller' => 'bread_crumb_tests',
@@ -385,7 +386,7 @@ class BreadCrumbBehaviorTest extends AppCakeTestCase {
 				]
 			],
 			[
-				'Герасимова Н.М.',
+				CakeText::truncate('Герасимова Н.М.', CAKE_THEME_BREADCRUMBS_TEXT_LIMIT),
 				[
 					3,
 					'plugin' => null,
