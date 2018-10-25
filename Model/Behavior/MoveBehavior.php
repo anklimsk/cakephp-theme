@@ -5,7 +5,7 @@
  *
  * CakeTheme: Set theme for application.
  * @copyright Copyright 2016, Andrey Klimov.
- * @package plugin.Controller.Component
+ * @package plugin.Model.Behavior
  */
 
 App::uses('ModelBehavior', 'Model');
