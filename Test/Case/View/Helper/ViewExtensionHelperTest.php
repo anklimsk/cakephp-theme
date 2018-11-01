@@ -1530,7 +1530,7 @@ class ViewExtensionHelperTest extends AppCakeTestCase {
 				[], // $lastInfo
 				'Some label', // $labelList
 				'some_controller', // $controllerName
-				'some_action', // $langCode
+				'some_action', // $actionName
 				10, // $length
 			],
 			[
@@ -1548,14 +1548,15 @@ class ViewExtensionHelperTest extends AppCakeTestCase {
 				], // $lastInfo
 				'', // $labelList
 				'some_controller', // $controllerName
-				'some_action', // $langCode
+				'some_action', // $actionName
+				['data-modal-size' => 'lg'], // $linkOptions
 				20, // $length
 			],
 		];
 		$expected = [
 			'<dl class="dl-horizontal"><dt>Some label:</dt><dd>' . __d('view_extension', '&lt;None&gt;') . '</dd></dl>',
 			[
-				'assertRegExp' => '/<dl class="dl-horizontal"><dt>Some Controller:<\/dt><dd><ol><li><a href="\/admin\/some_controller\/some_action\/1" data-toggle="modal-popover" class="popup-link text-nowrap" target="_blank" data-popover-placement="auto top" data-modal-title="Detail information">Some record<\/a> \(<time data-toggle="timeago" datetime="2017-03-06T12:10:27\+00:00" class="help">.+<\/time>\)<\/li><li><a href="\/admin\/some_controller\/some_action\/2" data-toggle="modal-popover" class="popup-link text-nowrap" target="_blank" data-popover-placement="auto top" data-modal-title="Detail information"><div class="collapse-text-expanded"><div class="collapse-text-truncated">Some long record<a href="#" role="button" data-toggle="collapse-text-expand" class="collapse-text-action-btn" title="Expand text"><span class="fas fa-angle-double-right fa-lg"><\/span><\/a><\/div><div class="collapse-text-original">Some long record name for test<a href="#" role="button" data-toggle="collapse-text-roll-up" class="collapse-text-action-btn" title="Roll up text"><span class="fas fa-angle-double-left fa-lg"><\/span><\/a><\/div><\/div><\/a> \(<time data-toggle="timeago" datetime="2017-03-06T12:14:42\+00:00" class="help">.+<\/time>\)<\/li><\/ol><\/dd><\/dl>/'
+				'assertRegExp' => '/<dl class="dl-horizontal"><dt>Some Controller:<\/dt><dd><ol><li><a href="\/admin\/some_controller\/some_action\/1" data-modal-size="lg" data-toggle="modal-popover" class="popup-link text-nowrap" target="_blank" data-popover-placement="auto top" data-modal-title="Detail information">Some record<\/a> \(<time data-toggle="timeago" datetime="2017-03-06T12:10:27\+00:00" class="help">.+<\/time>\)<\/li><li><a href="\/admin\/some_controller\/some_action\/2" data-modal-size="lg" data-toggle="modal-popover" class="popup-link text-nowrap" target="_blank" data-popover-placement="auto top" data-modal-title="Detail information"><div class="collapse-text-expanded"><div class="collapse-text-truncated">Some long record<a href="#" role="button" data-toggle="collapse-text-expand" class="collapse-text-action-btn" title="Expand text"><span class="fas fa-angle-double-right fa-lg"><\/span><\/a><\/div><div class="collapse-text-original">Some long record name for test<a href="#" role="button" data-toggle="collapse-text-roll-up" class="collapse-text-action-btn" title="Roll up text"><span class="fas fa-angle-double-left fa-lg"><\/span><\/a><\/div><\/div><\/a> \(<time data-toggle="timeago" datetime="2017-03-06T12:14:42\+00:00" class="help">.+<\/time>\)<\/li><\/ol><\/dd><\/dl>/'
 			]
 		];
 		$this->runClassMethodGroup('listLastInfo', $params, $expected);
