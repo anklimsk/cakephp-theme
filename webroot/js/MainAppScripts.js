@@ -1189,7 +1189,7 @@
             var url          = $item.parents('[data-toggle="draggable"]').data('url');
             var targetId     = $item.data('id');
             var targetObj    = container.el;
-            var dataTree     = targetObj.sortable("serialize").get();
+            var dataTree     = targetObj.sortable('serialize').get();
             var parentId     = targetObj.parent(itemSelector).data('id');
             if (typeof parentId === 'undefined') {
                 parentId = null;
@@ -2695,6 +2695,7 @@
                         changeParent = changeParentDef;
                     }
 
+                    isTable = false;
                     if (targetItem.prop('tagName').toLowerCase() === 'table') {
                         isTable = true;
                     }
