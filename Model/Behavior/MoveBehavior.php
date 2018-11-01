@@ -102,6 +102,10 @@ class MoveBehavior extends ModelBehavior {
 		if (!empty($id)) {
 			$conditions[$model->alias . '.' . $parentField] = (int)$id;
 		}
+		if ($model->Behaviors->Tree->settings[$model->alias]['scope'] !== '1 = 1') {
+			$conditions[] = $model->Behaviors->Tree->settings[$model->alias]['scope'];
+		}
+
 		$fields = [
 			$model->alias . '.' . $model->primaryKey,
 		];
