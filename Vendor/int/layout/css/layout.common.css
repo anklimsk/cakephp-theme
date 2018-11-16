@@ -115,7 +115,7 @@ dl.list-compact, ol.list-compact, ul.list-compact {
 }
 
 /* Typeahead */
-.form-default .twitter-typeahead {
+.twitter-typeahead {
     float: none;
     vertical-align: top;
 }
