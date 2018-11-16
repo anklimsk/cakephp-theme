@@ -1683,7 +1683,7 @@
 
             _showModalWindow(url, title, size, method, disableUseStack);
 
-            return true;
+            return false;
         }
 
         /**
