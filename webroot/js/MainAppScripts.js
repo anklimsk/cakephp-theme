@@ -251,8 +251,8 @@
 
             var objModalWindow = $form.parents('.main-app-scripts-modal');
             if (objModalWindow.length === 1) {
-                var currentUrl         = objModalWindow.data('modal-current-url');
-                var objForm            = $(responseText).find('form[action^="' + currentUrl + '"]');
+                var currentUrl         = $form.attr('action');
+                var objForm            = $(responseText).find('form[action="' + currentUrl + '"]');
                 var updateModalContent = $form.data('update-modal-content');
                 if (objForm.length > 0) {
                     var modalContent = _prepareModalContent(responseText, objModalWindow);
@@ -1585,7 +1585,6 @@
                 modalWindow.data('disable-use-stack', disableUseStack);
             }
 
-            modalWindow.data('modal-current-url', url);
             MainAppScripts.loadIndicatorOn(fadeBackground);
             $.ajax(
                 {
