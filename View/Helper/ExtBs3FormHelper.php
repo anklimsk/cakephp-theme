@@ -808,7 +808,9 @@ class ExtBs3FormHelper extends Bs3FormHelper {
 			['class' => 'fileinput-button btn ' . $btnClass]
 		) .
 			$this->Html->tag('br') .
+			$this->Html->tag('br') .
 			$this->Html->div('progress', $this->Html->div('progress-bar progress-bar-success', ''), ['id' => $progressId]) .
+			$this->Html->tag('hr') .
 			$this->Html->div('files', '', ['id' => $filesId]) .
 			$this->Html->tag('br');
 
