@@ -3,6 +3,8 @@
  *
  * @file    Main file for MainAppScripts
  * @version 0.20.7
+ * @copyright 2016-2018 Andrey Klimov.
+ * @license https://opensource.org/licenses/mit-license.php MIT License
  */
 
 (function (root, factory) {
