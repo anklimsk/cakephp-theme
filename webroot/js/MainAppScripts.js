@@ -2017,7 +2017,7 @@
          * @returns {null}
          */
         MainAppScripts.updateDisabledLinks = function () {
-            $('.disabled a, a.disabled').off('click.MainAppScripts').on(
+            $('.disabled a, a.disabled').off('click').on(
                 'click.MainAppScripts',
                 function (e) {
                     e.stopPropagation();
