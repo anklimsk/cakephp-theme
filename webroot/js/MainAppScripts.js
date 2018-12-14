@@ -2,7 +2,7 @@
  * This file use for application UI
  *
  * @file    Main file for MainAppScripts
- * @version 0.20.7
+ * @version 1.1.0
  * @copyright 2016-2018 Andrey Klimov.
  * @license https://opensource.org/licenses/mit-license.php MIT License
  */
@@ -4714,6 +4714,96 @@
                             name: 'autocomplete-data',
                             source: source
                         }
+                    );
+                }
+            );
+
+            return true;
+        };
+
+        /**
+         * This function used for bind Autocomplete for textarea elements
+         * Selector: `[data-toggle="textcomplete"]`.
+         * Attributes:
+         *  `data-textcomplete-strategies` - Array of strategies, e.g.:
+         *   - `match`, `replace`.
+         *   - `ajaxOptions`: A set of key/value pairs that configure the Ajax request.
+         *
+         * @function updateTextcomplete
+         * @memberof MainAppScripts
+         * @see      {@link https://github.com/yuku/textcomplete} Autocomplete for textarea elements
+         *
+         * @returns {null}
+         */
+        MainAppScripts.updateTextcomplete = function () {
+            if (typeof Textcomplete === 'undefined') {
+                return false;
+            }
+
+            var targetBlock       = $('[data-toggle="textcomplete"]');
+            var targetBlockLength = targetBlock.length;
+            if (targetBlockLength === 0) {
+                return true;
+            }
+
+            var Textarea = Textcomplete.editors.Textarea;
+            var targetItem   = null;
+            var editor       = null;
+            var textcomplete = null;
+            var strategies   = [];
+            targetBlock.each(
+                function (i, el) {
+                    targetItem = $(el);
+                    strategies = targetItem.data('textcomplete-strategies');
+                    if (!strategies || (typeof strategies !== 'object')) {
+                        return true;
+                    }
+
+                    $.each(strategies,
+                        function (i, strategy) {
+                            $.each(strategy,
+                                function (prop, val) {
+                                    switch (prop) {
+                                        case 'match':
+                                            strategy[prop] = new RegExp(val, 'i');
+                                        break;
+
+                                        case 'replace':
+                                            strategy[prop] = new Function('value', val);
+                                        break;
+
+                                        case 'search':
+                                            strategy[prop] = new Function('term', 'callback', val);
+                                        break;
+
+                                        case 'ajaxOptions':
+                                            if (!val || (typeof val !== 'object') ||
+                                                !val.hasOwnProperty('url') || !val.hasOwnProperty('data') ||
+                                                (typeof val.data !== 'object')) {
+                                                    return true;
+                                            }
+                                            if (!val.hasOwnProperty('method')) {
+                                                val.method = 'POST';
+                                            }
+                                            strategy['search'] = function (term, callback) {
+                                                val.data.query = term;
+                                                val.dataType = 'json';
+                                                $.ajax(val).done(function (resp) { callback(resp); }).fail(function () { callback([]); });
+                                            };
+                                            delete strategy[prop];
+                                        break;
+                                    }
+                                }
+                            );
+                            if (!strategy.hasOwnProperty('cache')) {
+                                strategy.cache = true;
+                            }
+                        }
+                    );
+                    editor = new Textarea(el);
+                    textcomplete = new Textcomplete(editor);
+                    textcomplete.register(
+                        strategies
                     );
                 }
             );

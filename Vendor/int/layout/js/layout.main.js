@@ -51,6 +51,7 @@
                     MainAppScripts.updateFlagSelect();
                     MainAppScripts.updateCloneDOMelements();
                     MainAppScripts.updateAutocomplete();
+                    MainAppScripts.updateTextcomplete();
                     MainAppScripts.updatePopover();
                     MainAppScripts.updateExpandTruncatedText();
                     MainAppScripts.updateSortable();
