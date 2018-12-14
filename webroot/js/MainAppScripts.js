@@ -1389,6 +1389,41 @@
         }
 
         /**
+         * Return template for popover by size.
+         *
+         * @param {string} size Size of popover
+         *
+         * @callback _getPopoverTemplate
+         * @memberof MainAppScripts
+         *
+         * @returns {string} Template for popover
+         */
+        function _getPopoverTemplate(size)
+        {
+            var templateNormal = '<div class="popover" role="tooltip">\
+                    <div class="arrow"></div>\
+                    <h3 class="popover-title"></h3>\
+                    <div class="popover-content"></div>\
+                </div>';
+            var templateLarge = '<div class="popover popover-lg" role="tooltip">\
+                    <div class="arrow"></div>\
+                    <h3 class="popover-title"></h3>\
+                    <div class="popover-content"></div>\
+                </div>';
+
+            if (!size) {
+                return templateNormal;
+            }
+
+            size = size.toLowerCase();
+            if (size === 'lg') {
+                return templateLarge;
+            }
+
+            return templateNormal;
+        }
+
+        /**
          * Create template of modal window
          *
          * @function _createTemplateModalWindow
@@ -3099,6 +3134,7 @@
          *  `data-popover-url` - URL for loading content;
          *  `data-popover-placement` - position of popover;
          *  `data-popover-title` - title of popover.
+         *  `data-popover-size` - size of popover: `lg`.
          *
          * @function updatePopover
          * @memberof MainAppScripts
@@ -3112,24 +3148,45 @@
                 return false;
             }
 
-            $('[data-toggle="popover"],[data-toggle="modal-popover"]').popover(
-                {
-                    content: _getPopoverContent,
-                    delay: {
-                        'show': 1000,
-                        'hide': 100
-                    },
-                    html: true,
-                    placement: $(this).data('popover-placement'),
-                    container: _contentContainer,
-                    title: $(this).data('popover-title'),
-                    trigger: 'hover'
-                }
-            ).off('inserted.bs.popover').on(
-                'inserted.bs.popover',
-                function (e) {
-                    _moveTooltip(e);
-                    MainAppScripts.update();
+            var targetBlock = $('[data-toggle="popover"],[data-toggle="modal-popover"]');
+            if (targetBlock.length === 0) {
+                return true;
+            }
+
+            var targetItem = null;
+            var title      = null;
+            var size       = null;
+            var placement  = null;
+            targetBlock.each(
+                function (i, el) {
+                    targetItem = $(el);
+                    title      = $(this).data('popover-title');
+                    size       = $(this).data('popover-size');
+                    placement  = $(this).data('popover-placement');
+                    if (!placement) {
+                        placement = 'right';
+                    }
+                    targetItem.popover(
+                        {
+                            content: _getPopoverContent,
+                            delay: {
+                                'show': 1000,
+                                'hide': 100
+                            },
+                            html: true,
+                            placement: placement,
+                            container: _contentContainer,
+                            template: _getPopoverTemplate(size),
+                            title: title,
+                            trigger: 'hover'
+                        }
+                    ).off('inserted.bs.popover').on(
+                        'inserted.bs.popover',
+                        function (e) {
+                            _moveTooltip(e);
+                            MainAppScripts.update();
+                        }
+                    );
                 }
             );
 
