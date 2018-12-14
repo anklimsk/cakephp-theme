@@ -2104,6 +2104,8 @@
                                 return;
                             }
 
+                            $('body').removeClass('modal-open');
+                            $('.modal-backdrop').remove();
                             MainAppScripts.update();
                             MainAppScripts.loadIndicatorOff(fadeBackground);
                         }
