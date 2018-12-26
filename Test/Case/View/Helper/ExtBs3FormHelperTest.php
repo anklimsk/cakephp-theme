@@ -40,7 +40,7 @@ class ExtBs3FormHelperTest extends AppCakeTestCase {
 		parent::setUp();
 
 		$View = new View();
-		$request = new CakeRequest(); 
+		$request = new CakeRequest();
 		$request->addParams(array(
 				'plugin' => null, 'controller' => 'employees', 'action' => 'add',
 				'prefix' => 'admin', 'admin' => true,
