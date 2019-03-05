@@ -21,8 +21,20 @@ if (!isset($emailSubject)) {
 	$emailSubject = '';
 }
 
+if (!isset($projectVersion)) {
+	$projectVersion = null;
+}
+
+if (!isset($projectAuthor)) {
+	$projectAuthor = null;
+}
+
 if (!isset($showBreadcrumb)) {
 	$showBreadcrumb = true;
+}
+
+if (!isset($showFooter)) {
+	$showFooter = true;
 }
 
 if (!isset($uiLcid2) || empty($uiLcid2)) {
@@ -114,6 +126,13 @@ if ($showBreadcrumb) {
 		<div id="content">
 <?php
 	echo $this->fetch('content');
+?>
+		</div>
+		<div id="footer">
+<?php
+	if ($showFooter) {
+		echo $this->element('CakeTheme.footerPageBase', compact('projectVersion', 'projectAuthor'));
+	}
 ?>
 		</div>
 	</div>

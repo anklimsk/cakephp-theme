@@ -20,6 +20,11 @@ body.use-navbar-only {
     padding-top: 50px;
 }
 
+/* Body with Footer */
+body.use-footer {
+    padding-bottom: 20px;
+}
+
 /* Page content block */
 #content {
     clear: both;
@@ -40,6 +45,11 @@ body.use-navbar-only {
     top: 50px;
     z-index: 1020;
     margin-bottom: 0;
+}
+
+/* footer block */
+.footer {
+    min-height: 20px;
 }
 
 /* Styling forms */

@@ -5194,23 +5194,31 @@
                 return 1;
             }
 
-            var classBody = '';
+            var classBodyStr = '';
+            var classBodyArr = [];
             var objHeader = $('#header');
-            if (objHeader.length === 0) {
+            var objFooter = $('#footer');
+            if ((objHeader.length === 0) && (objFooter.length === 0)) {
                 return true;
             }
 
             if (objHeader.find('[role="navigation"]').length === 1) {
-                classBody = 'use-navbar-only';
                 if (objHeader.find('.breadcrumb').length === 1) {
-                    classBody = 'use-navbar-breadcrumb';
+                    classBodyArr.push('use-navbar-breadcrumb');
+                } else {
+                    classBodyArr.push('use-navbar-only');
                 }
             } else if (objHeader.find('.breadcrumb').length === 1) {
-                classBody = 'use-breadcrumb-only';
+                classBodyArr.push('use-breadcrumb-only');
             }
 
-            if (classBody) {
-                objBody.addClass(classBody);
+            if (objFooter.find('.footer.navbar-fixed-bottom').length === 1) {
+                classBodyArr.push('use-footer');
+            }
+
+            if (classBodyArr.length > 0) {
+                classBodyStr = classBodyArr.join(' ');
+                objBody.addClass(classBodyStr);
             }
 
             MainAppScripts.processUIReadyCounter('BodyClass');
