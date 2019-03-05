@@ -4,7 +4,7 @@
  *  of page as `main` style.
  *
  * CakeTheme: Set theme for application.
- * @copyright Copyright 2016-2018, Andrey Klimov.
+ * @copyright Copyright 2016-2019, Andrey Klimov.
  * @license https://opensource.org/licenses/mit-license.php MIT License
  * @package plugin.View.Layouts
  */
@@ -90,7 +90,7 @@ if (isset($additionalJsFiles) && !empty($additionalJsFiles)) {
 <![endif]-->
 </head>
 <body>
-	<div class='mainappscripts-ds-overlay-higher'></div>
+	<div class="mainappscripts-ds-overlay-higher"></div>
 	<div id="container">
 		<div id="header">
 <?php

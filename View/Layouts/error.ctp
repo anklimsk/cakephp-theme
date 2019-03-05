@@ -67,6 +67,7 @@ if (isset($pageTitlePostfix) && !empty($pageTitlePostfix)) {
 <![endif]-->
 </head>
 <body>
+	<div class="mainappscripts-ds-overlay-higher"></div>
 	<div id="container">
 		<div id="header">
 <?php

@@ -2,8 +2,8 @@
  * This file use for application UI
  *
  * @file    Main file for MainAppScripts
- * @version 1.1.0
- * @copyright 2016-2018 Andrey Klimov.
+ * @version 1.1.2
+ * @copyright 2016-2019 Andrey Klimov.
  * @license https://opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -21,10 +21,11 @@
         'use strict';
 
         /**
-         * @version 0.20.7
+         * @version 1.1.2
          * @namespace MainAppScripts
          */
         var MainAppScripts = {};
+
         /**
          * Content container for AJAX requset
          *
@@ -5119,6 +5120,10 @@
                 } else {
                     return false;
                 }
+            }
+
+            if ($('.fas,.far,.fal,.fab').length === 0) {
+                return 0;
             }
 
             if (returnCount) {
