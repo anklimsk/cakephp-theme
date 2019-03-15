@@ -318,3 +318,14 @@ ul.list-collapsible-compact, ol.list-collapsible-compact {
     -webkit-hyphens: auto;
     -ms-hyphens: auto;
 }
+
+/* Text */
+.break-long-words {
+    word-wrap: break-word;
+}
+
+.text-hyphenation {
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+}
